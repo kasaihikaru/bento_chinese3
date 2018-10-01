@@ -75,3 +75,4 @@ gem 'rmagick'   # 画像加工用
 gem 'dotenv-rails' #環境変数の管理用
 gem 'ruby-pinyin' #ピンインを入れる
 gem 'kaminari' #ページネーション
+gem 'google-analytics-rails' #forGA
