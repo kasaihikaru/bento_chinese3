@@ -1,0 +1,541 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "users";
+@import "books";
+@import "rings";
+@import "sentences";
+@import "words";
+@import "vocabularies";
+
+
+
+//--------------- 共通 ----------------
+$first-col : #000000;
+$second-col : #A4A4A4;
+$third-col : #E2EEF9;
+$forth-col : #EEEEEE;
+$fifth-col : #FFFFFF;
+
+$key-col: #336699;
+$key-col2: #3333CC;
+
+//--------------- 背景色 ----------------
+.bg-first{  background-color: $first-col;}
+.bg-second{  background-color: $second-col;}
+.bg-third{  background-color: $third-col;}
+.bg-forth{  background-color: $forth-col;}
+.bg-fifth{  background-color: $fifth-col;}
+.bg-key{  background-color: $key-col;}
+
+//--------------- 文字色 ----------------
+.cl-first{  color: $first-col;}
+.cl-second{  color: $second-col;}
+.cl-third{  color: $third-col;}
+.cl-forth{  color: $forth-col;}
+.cl-fifth{  color: $fifth-col;}
+.bold{  font-weight: 800;}
+
+//--------------- 文字サイズ ----------------
+p{ font-size: 15px; }
+.font-30{ font-size: 30px;}
+.font-18{ font-size: 18px;}
+.font-15{ font-size: 15px;}
+.font-12{ font-size: 12px;}
+
+//--------------- リンク ----------------
+a, a:hover{  color: $key-col;}
+.thin-link{
+  a, a:hover{  color: $second-col;}
+}
+
+//--------------- 配置 ----------------
+.float-right{  float: right;}
+.float-left{  float: left;}
+.left-align{  text-align: left;}
+.right-align{  text-align: right;}
+.center-align{  text-align: center;}
+.letter-bottom{  vertical-align: baseline; }
+.indent{  padding-left: 30px;}
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inline-center{
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+  align-items: center; /* 縦方向中央揃え */
+}
+.margin-auto{  margin: 0 auto;}
+.margin-0{  margin: 0;}
+.margin-5{  margin: 5px;}
+.padding-0{  padding: 0;}
+.padding-2{  padding: 2px;}
+.padding-tb-10{  padding: 10px 0;}
+.margin-t-5{  margin-top: 5px;}
+.margin-t-15{  margin-top: 15px;}
+.margin-b-80{  margin-bottom: 80px;}
+.margin-b-30{  margin-bottom: 30px;}
+.margin-b-15{  margin-bottom: 15px;}
+.margin-b-5{  margin-bottom: 5px;}
+
+//--------------- 大きさ ----------------
+.width-max{ width: 100%;}
+.width-80per{ width: 80%;}
+
+
+//--------------- ボタン ----------------
+.btn-selected{
+	background-color: $key-col;
+	color: $fifth-col;
+	font-size: 15px;
+	font-weight: 800;
+	padding: 5px 15px;
+	margin: 0 2px;
+  border-radius: 5px;
+  border: none;
+}
+
+.btn-unselected{
+	background-color: $fifth-col;
+	color: $key-col;
+  font-size: 15px;
+  font-weight: 800;
+  padding: 5px 15px;
+  margin: 0 2px;
+  border-radius: 5px;
+  border: 1px solid $key-col;
+  cursor: pointer;
+}
+
+.svg-btn{
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.prim-btn{
+  background-color: $key-col;
+  color: $fifth-col;
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+
+.second-btn{
+  background-color: $second-col;
+  color: $fifth-col;
+  padding: 3px 8px;
+  border-radius: 5px;
+  border: none;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+
+.square_btn{
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border: solid 1px $second-col;
+  border-bottom: solid 4px $second-col;
+  border-radius: 3px;
+}
+.square_btn:active {/*ボタンを押したとき*/
+  -ms-transform: translateY(4px);
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+  border-bottom: solid 1px $second-col;
+}
+
+//--------------- border ----------------
+.border-none{
+	border: none;
+}
+.border-b-double{
+  border-bottom: double 4px $first-col;
+}
+
+
+
+
+// バッジ
+.prime-badge{
+  color: $forth-col;
+  background-color: $fifth-col;
+  border: #CCCCCC 1px solid;
+  border-bottom: $first-col 1px solid;
+}
+.subprime-badge{
+  color: $forth-col;
+  background-color: $fifth-col;
+  border: #CCCCCC 1px solid;
+  border-bottom: $second-col 1px solid;
+}
+.black-badge{
+  color: $forth-col;
+  background-color: $fifth-col;
+  border: #CCCCCC 1px solid;
+  border-bottom: $forth-col 1px solid;
+}
+.white-badge{
+  color: $forth-col;
+  background-color: $fifth-col;
+  border: #CCCCCC 1px solid;
+}
+
+
+// underline
+.underline{
+  border-bottom: 1px solid $second-col;
+}
+.topline{
+  border-top: 1px solid $second-col;
+}
+.bold-topline{
+  border-top: 3px solid $key-col;
+}
+
+
+.under-line-subprime{
+  position: relative;
+  padding: .25em 0 .5em .75em;
+  border-left: 6px solid #ccc;
+}
+.under-line-subprime::before {
+  position: absolute;
+  left: -6px;
+  bottom: 0;
+  content: '';
+  width: 6px;
+  height: 50%;
+  background-color: #3498db;
+}
+.under-line-subprime::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  content: '';
+  width: 100%;
+  height: 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.under-marker-subprime{
+  background: linear-gradient(transparent 70%, $second-col 70%);
+}
+.under-marker-prime{
+  background: linear-gradient(transparent 70%, $first-col 70%);
+}
+.under-marker-grey{
+  background: linear-gradient(transparent 70%, #CCCCCC 70%);
+}
+
+
+
+
+//--------------- 対策 ----------------//
+pre {
+  overflow: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.clearfix:after {
+  content:" ";
+  display:block;
+  clear:both;
+}
+.notice, .alert{
+  text-align: center;
+  background-color: #FF8000;
+  color: $fifth-col;
+  margin:0;
+}
+
+
+//----------------- pagenatiom ------------------//
+.pagination{
+  .active .page-link{
+    background: $second-col;
+    border-color: $second-col;
+  }
+  .page-link{
+    color: #000000;
+  }
+}
+
+
+
+/*******************************
+* バルーン
+********************************/
+// 左から
+.left_balloon {
+		color: $first-col;
+    position: relative;
+    background: $forth-col;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 15px;
+    // clear: both; //アイコン横に並べるため。
+    float: left;
+    @media screen and (max-width: 767px) {
+			margin-left: 25px;
+		}
+		@media screen and (min-width: 768px) {
+			margin-left: 38px;
+		}
+}
+.left_balloon:after,
+.left_balloon:before {
+    right: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+.left_balloon:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-right-color: $forth-col;
+    border-width: 7px;
+    margin-top: -7px;
+}
+.left_balloon:before {
+    border-color: rgba(0, 0, 0, 0);
+    border-width: 8px;
+    margin-top: -8px;
+}
+
+// 右から
+.right_balloon {
+    position: relative;
+    background: $forth-col;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    margin-left: 20%;
+    clear: both;
+    max-width: 500px;
+    float: right;
+}
+.right_balloon:after,
+.right_balloon:before {
+    left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+.right_balloon:after {
+    border-color: rgba(133, 226, 73, 0);
+    border-left-color: $forth-col;
+    border-width: 7px;
+    margin-top: -7px;
+}
+.right_balloon:before {
+    border-color: rgba(119, 119, 119, 0);
+    border-width: 8px;
+    margin-top: -8px;
+}
+// 割り込み解除
+.clear_balloon{
+  clear: both;
+}
+
+/*******************************
+* 固定系
+********************************/
+.brand-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  width: 100%;
+  height: 20px;
+  background: $key-col;
+  color: $fifth-col;
+  z-index: 100;
+  }
+
+.contents{
+  margin: 20px 0 51px;
+}
+
+footer{
+  position: fixed;
+  bottom: 0;
+  margin: 0;
+  width: 100%;
+  height: 51px;
+  background: $fifth-col;
+  z-index: 100;
+}
+
+
+//----------------- sentence-chank ------------------//
+.sentence-chank{
+	margin-top: 30px;
+	.left-sentence-wrapper{
+			position: relative;
+			max-width: 80%
+	}
+	.icon{
+		border-radius: 4px;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%) translateX(-50%);
+		@media screen and (max-width: 767px) {
+			margin-left: 5px;
+			width: 25px;
+			height: 25px;
+		}
+		@media screen and (min-width: 768px) {
+			width: 35px;
+			height: 35px;
+		}
+	}
+	table{
+		background-color: $fifth-col;
+		border: 2px solid $forth-col;
+	}
+}
+
+
+//----------------- vocabulary-chank ------------------//
+.vocabulary-chank{
+  .icon{
+    border-radius: 4px;
+    @media screen and (max-width: 767px) {
+      margin-left: 5px;
+      width: 25px;
+      height: 25px;
+    }
+    @media screen and (min-width: 768px) {
+      width: 35px;
+      height: 35px;
+    }
+  }
+  table{
+    background-color: $fifth-col;
+    border: 2px solid $forth-col;
+  }
+}
+
+//----------------- home-navi ------------------//
+.home-navi{
+	margin: 40px 0 20px;
+}
+
+
+
+
+
+
+//----------------- profile ------------------//
+.profile{
+  margin: 40px 0;
+  .icon{
+    border-radius: 4px;
+    width: 100%;
+  }
+
+}
+
+
+/*******************************
+* ラジオボタン
+********************************/
+.label-radio input[type="radio"]{
+  display: none;
+}
+.label-radio{
+  cursor: pointer;
+  color: $first-col;
+  font-weight: normal;
+  letter-spacing: 0;
+  display: inline-block;
+  position: relative;
+  margin-right: 20px;
+}
+.label-radio .lever:before{
+  content:'';
+  border: 1px solid #ddd;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius:10px;
+  -webkit-transition: all 800ms cubic-bezier(1, 0, 0, 1);
+  -moz-transition: all 800ms cubic-bezier(1, 0, 0, 1);
+  -o-transition: all 800ms cubic-bezier(1, 0, 0, 1);
+  transition: all 800ms cubic-bezier(1, 0, 0, 1);
+  -webkit-transition-timing-function: cubic-bezier(1, 0, 0, 1);
+  -moz-transition-timing-function: cubic-bezier(1, 0, 0, 1);
+  -o-transition-timing-function: cubic-bezier(1, 0, 0, 1);
+  transition-timing-function: cubic-bezier(1, 0, 0, 1);
+}
+.label-radio input[type="radio"]:checked + .lever:before{
+  opacity: 0;
+  background: #eee;
+  border-color: #eee;
+  transform:scale(2);
+}
+.label-radio .lever:after{
+  content:'';
+  opacity: 0;
+  position: absolute;
+  left: 8px;
+  top: 0px;
+  width:8px;
+  height: 16px;
+  border-right: 2px solid $first-col;
+  border-bottom: 2px solid $first-col;
+  transform:rotate(-200deg);
+  -webkit-transition: all 400ms cubic-bezier(1, 0, 0, 1);
+  -moz-transition: all 400ms cubic-bezier(1, 0, 0, 1);
+  -o-transition: all 400ms cubic-bezier(1, 0, 0, 1);
+  transition: all 400ms cubic-bezier(1, 0, 0, 1);
+  -webkit-transition-timing-function: cubic-bezier(1, 0, 0, 1);
+  -moz-transition-timing-function: cubic-bezier(1, 0, 0, 1);
+  -o-transition-timing-function: cubic-bezier(1, 0, 0, 1);
+  transition-timing-function: cubic-bezier(1, 0, 0, 1);
+}
+.label-radio input[type="radio"]:checked + .lever:after{
+  opacity: 1;
+  position: absolute;
+  left: 8px;
+  top: 0px;
+  width:8px;
+  height: 16px;
+  border-right: 2px solid $key-col;
+  border-bottom: 2px solid $key-col;
+  transform:rotate(40deg);
+}

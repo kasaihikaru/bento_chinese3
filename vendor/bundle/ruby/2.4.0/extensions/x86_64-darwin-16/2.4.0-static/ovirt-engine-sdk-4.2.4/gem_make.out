@@ -1,0 +1,26 @@
+current directory: /Users/01018603/work/bc3/vendor/bundle/ruby/2.4.0/gems/ovirt-engine-sdk-4.2.4/ext/ovirtsdk4c
+/Users/01018603/.rbenv/versions/2.4.2/bin/ruby -r ./siteconf20180929-22431-lyj5dn.rb extconf.rb
+checking for xml2-config... yes
+checking for curl-config... yes
+creating Makefile
+
+current directory: /Users/01018603/work/bc3/vendor/bundle/ruby/2.4.0/gems/ovirt-engine-sdk-4.2.4/ext/ovirtsdk4c
+make "DESTDIR=" clean
+
+current directory: /Users/01018603/work/bc3/vendor/bundle/ruby/2.4.0/gems/ovirt-engine-sdk-4.2.4/ext/ovirtsdk4c
+make "DESTDIR="
+compiling ov_error.c
+compiling ov_http_client.c
+compiling ov_http_request.c
+compiling ov_http_response.c
+compiling ov_http_transfer.c
+compiling ov_module.c
+compiling ov_string.c
+compiling ov_xml_reader.c
+compiling ov_xml_writer.c
+compiling ovirtsdk4c.c
+linking shared-object ovirtsdk4c.bundle
+
+current directory: /Users/01018603/work/bc3/vendor/bundle/ruby/2.4.0/gems/ovirt-engine-sdk-4.2.4/ext/ovirtsdk4c
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 ovirtsdk4c.bundle ./.gem.20180929-22431-sfrg6x

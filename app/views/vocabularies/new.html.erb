@@ -1,0 +1,30 @@
+<%= form_tag("/vocabularies", method: :post) do %>
+
+	<!-- 単語帳選択 -->
+	<div class="">
+		<%= label_tag(:ring, "保存先の単語帳") %>
+    <% if params[:ring_id].present? %>
+      <%= select_tag :ring_id, options_from_collection_for_select(@myrings, :id, :name, selected: params[:ring_id]) %>
+    <% else %>
+      <%= select_tag :ring_id, options_from_collection_for_select(@myrings, :id, :name) %>
+    <% end %>
+	</div>
+
+
+	<!-- 単語フォーム -->
+  <%= text_field_tag "vocabulary[1][ja]", "",  :placeholder=> "日本語" %>
+  <%= text_field_tag "vocabulary[1][ch]", "", placeholder: "中国語" %><br>
+  <%= text_field_tag "vocabulary[2][ja]", "",  :placeholder=> "日本語" %>
+  <%= text_field_tag "vocabulary[2][ch]", "", placeholder: "中国語" %><br>
+  <%= text_field_tag "vocabulary[3][ja]", "",  :placeholder=> "日本語" %>
+  <%= text_field_tag "vocabulary[3][ch]", "", placeholder: "中国語" %><br>
+  <%= text_field_tag "vocabulary[4][ja]", "",  :placeholder=> "日本語" %>
+  <%= text_field_tag "vocabulary[4][ch]", "", placeholder: "中国語" %><br>
+  <%= text_field_tag "vocabulary[5][ja]", "",  :placeholder=> "日本語" %>
+  <%= text_field_tag "vocabulary[5][ch]", "", placeholder: "中国語" %><br>
+
+  <%= submit_tag("単語を追加") %>
+
+<% end %>
+
+<%= render :partial => 'footer/footer_new_vocabulary_selected' %>

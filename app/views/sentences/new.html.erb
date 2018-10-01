@@ -1,0 +1,25 @@
+<%= form_for @sentence, method: :post do |f| %>
+
+	<!-- 短文帳選択 -->
+	<div class="">
+		<%= label_tag(:book, "保存先の短文帳") %>
+		<% if params[:book_id].present? %>
+			<%= f.collection_select 'book_id', @mybooks, :id, :name, selected: params[:book_id] %>
+		<% else %>
+			<%= f.collection_select 'book_id', @mybooks, :id, :name %>
+		<% end %>
+	</div>
+
+	<!-- 短文フォーム -->
+	<div class="">
+		<%= f.text_area :ja, placeholder: "日本語文を書く", :required => true %>
+		<%= f.text_area :ch, placeholder: "中国語文を書く", id: "sentence-ch", :required => true %>
+	</div>
+
+	<!-- 単語フォーム -->
+	<%= render :partial => "form/sentence_new_words", :locals=>{:f=>f} %>
+
+	<%= f.submit "作成", class: "", id: "" %>
+<% end %>
+
+<%= render :partial => 'footer/footer_new_sentence_selected' %>

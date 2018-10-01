@@ -1,0 +1,179 @@
+<div class="container margin-b-15">
+	<% if user_signed_in? && @current_book.user_id != current_user.id %>
+		<div class="font-30 bold float-left"><%= @current_book.name %></div>
+		<!-- 短文コピーボタン -->
+		<div type="button" class="float-right svg-btn" data-toggle="modal" data-target="#copy-book">
+		  <%= render :partial => 'svg/copy_sentence' %>
+		</div>
+		<div class="modal fade" id="copy-book" tabindex="-1" aria-hidden="true">
+			<%= form_tag book_copy_path (@current_book) do %>
+			  <div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<p class="font-18 bold">短文帳を丸々コピーする</p>
+						</div>
+						<div class="modal-body">
+							短文帳の名前をつけてください<br><br>
+							<%= text_field_tag 'book_name', '', class: 'font-18 width-max', value: @current_book.name %>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+			        <%= submit_tag "コピー", class: "prim-btn"%>
+			      </div>
+			    </div>
+			  </div>
+			 <% end %>
+		</div><!-- End of 短文コピー -->
+	<% end %>
+	<% if user_signed_in? && @current_book.user_id == current_user.id %>
+		<%= form_for @current_book, method: :put do |f| %>
+		  <%= f.text_field :name, value: @current_book.name, class: "border-none font-18 margin-t-15 bold width-80per", :required => true%>
+		  <%= f.hidden_field :redirect_flg, value: "sentence_ja" %>
+		  <%= f.submit "変更", class: "second-btn float-right margin-t-15", id: "" %>
+		<% end %>
+	<% end %>
+</div>
+
+<div class="container margin-b-15">
+	<div class="row center-align">
+		<div class="col-xs-2 padding-2 center-align font-15 margin-t-5">
+			文
+		</div>
+		<%= link_to book_sentence_ja_path(@current_book) do %>
+			<div class="col-xs-3 padding-2">
+				<div class="btn-selected">日</div>
+			</div>
+		<% end %>
+		<%= link_to book_sentence_ch_path(@current_book) do %>
+			<div class="col-xs-3 padding-2">
+				<div class="btn-unselected">中</div>
+			</div>
+		<% end %>
+		<%= link_to book_sentence_pin_path(@current_book) do %>
+			<div class="col-xs-3 padding-2">
+				<div class="btn-unselected">pin</div>
+			</div>
+		<% end %>
+	</div>
+	<div class="row center-align margin-b-15">
+		<div class="col-xs-2 padding-2 center-align font-15 margin-t-5">
+			単
+		</div>
+		<%= link_to book_word_ja_path(@current_book) do %>
+			<div class="col-xs-3 padding-2">
+				<div class="btn-unselected">日</div>
+			</div>
+		<% end %>
+		<%= link_to book_word_ch_path(@current_book) do %>
+			<div class="col-xs-3 padding-2">
+				<div class="btn-unselected">中</div>
+			</div>
+		<% end %>
+		<%= link_to book_word_pin_path(@current_book) do %>
+			<div class="col-xs-3 padding-2">
+				<div class="btn-unselected">pin</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<div class="container margin-b-15 center-align">
+	<% if user_signed_in? && @current_book.user_id == current_user.id %>
+		<%= link_to book_uncheck_all_sentences_ja_path(@current_book),method: :put do %>
+			非表示にした短文を全て表示
+		<% end %>
+	<% end %>
+</div>
+<hr>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8" >
+			<div id="sentences-chank-home">
+				<% @sentences.each do |sentence| %>
+					<div class="sentence-chank" id="sentence-chank-<%= sentence.id %>">
+
+						<!-- コピーボタン or 編集ボタン-->
+						<div class="float-right font-12 thin-link">
+							<% if user_signed_in? && sentence.book.user_id != current_user.id %>
+							<% end %>
+							<% if user_signed_in? && sentence.book.user_id == current_user.id %>
+								<%= link_to edit_sentence_path(sentence, redirect_flg: "sentence_ja") do %>
+									編集
+								<% end %>
+							<% end %>
+						</div>
+
+						<!-- left-sentence -->
+						<div class="left-sentence-wrapper float-left"">
+							<% if sentence.book.user.image? %>
+								<%= link_to user_path(sentence.book.user) do %>
+									<%= image_tag sentence.book.user.image.thumb.url, :alt => "icon", :class => "icon" %>
+								<% end %>
+							<% else %>
+								<%= link_to user_path(sentence.book.user) do %>
+									<img class="icon" alt="no-icon" src="/images/no-icon.png">
+								<% end %>
+							<% end %>
+							<p class="left_balloon"><%= sentence.ja %></p>
+						</div>
+
+						<!-- right-sentence -->
+						<p class="right_balloon"><%= sentence.ch %></p>
+						<br class="clear_balloon"/>
+						<% if sentence.pin.present? %>
+							<p class="right_balloon"><%= sentence.pin %></p>
+						<% end %>
+						<% unless sentence.words.first == nil %>
+							<div class="float-left">
+								<button class="svg-btn" type="button" data-toggle="collapse" data-target="#words-open<%= sentence.id %>" aria-expanded="false" aria-controls="collapseExample">
+									<%= render :partial => 'svg/words' %>
+								</button>
+							</div>
+							<br class="clear_balloon"/>
+							<div class="collapse" id="words-open<%= sentence.id %>">
+								<div class="card card-body">
+									<table class="table table-sm">
+										<thead>
+											<tr>
+												<th scope="col">日</th>
+												<th scope="col">中</th>
+												<th scope="col">Pin</th>
+											</tr>
+										</thead>
+										<tbody>
+											<% sentence.words.each do |word| %>
+												<tr>
+													<th scope="col"><%= word.ja %></th>
+													<th scope="col"><%= word.ch %></th>
+													<th scope="col"><%= word.pin %></th>
+												</tr>
+											<% end %>
+										</tbody>
+									</table>
+							  </div>
+							</div>
+						<% end %>
+						<br class="clear_balloon"/>
+						<div class="center-align">
+							<% if user_signed_in? && sentence.book.user_id == current_user.id %>
+								<div>
+									<%= link_to sentence_check_ja_path(sentence_id: sentence.id), method: :put, remote: true do %>
+										覚えた！消えて！
+									<% end %>
+								</div>
+							<% end %>
+							<hr>
+						</div>
+					</div>
+				<% end %>
+				<%= paginate @sentences %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<% if @current_book.user_id == current_user.id %>
+	<%= render :partial => 'footer/footer_not_selected_with_book_id' %>
+<% else %>
+	<%= render :partial => 'footer/footer_not_selected' %>
+<% end %>

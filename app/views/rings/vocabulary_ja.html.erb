@@ -1,0 +1,102 @@
+<div class="container margin-b-15">
+	<% if user_signed_in? && @current_ring.user_id != current_user.id %>
+		<div class="font-30 bold float-left"><%= @current_ring.name %></div>
+		<!-- 単語コピーボタン -->
+		<div type="button" class="float-right svg-btn" data-toggle="modal" data-target="#copy-ring">
+		  <%= render :partial => 'svg/copy_vocabulary' %>
+		</div>
+		<div class="modal fade" id="copy-ring" tabindex="-1" aria-hidden="true">
+			<%= form_tag ring_copy_path (@current_ring) do %>
+			  <div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<p class="font-18 bold">短文帳を丸々コピーする</p>
+						</div>
+						<div class="modal-body">
+							短文帳の名前をつけてください<br><br>
+							<%= text_field_tag 'ring_name', '', class: 'font-18 width-max', value: @current_ring.name %>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+			        <%= submit_tag "コピー", class: "prim-btn"%>
+			      </div>
+			    </div>
+			  </div>
+			 <% end %>
+		</div><!-- End of 短文コピー -->
+	<% end %>
+	<% if user_signed_in? && @current_ring.user_id == current_user.id %>
+		<%= form_for @current_ring, method: :put do |f| %>
+		  <%= f.text_field :name, value: @current_ring.name, class: "border-none font-18 margin-t-15 bold width-80per", :required => true%>
+		  <%= f.hidden_field :redirect_flg, value: "vocabulary_ja" %>
+		  <%= f.submit "変更", class: "second-btn float-right margin-t-15", id: "" %>
+		<% end %>
+	<% end %>
+</div>
+
+<div class="container margin-b-15">
+	<div class="row center-align">
+		<%= link_to ring_vocabulary_ja_path(@current_ring) do %>
+			<div class="col-xs-4 padding-2">
+				<div class="btn-selected">日</div>
+			</div>
+		<% end %>
+		<%= link_to ring_vocabulary_ch_path(@current_ring) do %>
+			<div class="col-xs-4 padding-2">
+				<div class="btn-unselected">中</div>
+			</div>
+		<% end %>
+		<%= link_to ring_vocabulary_pin_path(@current_ring) do %>
+			<div class="col-xs-4 padding-2">
+				<div class="btn-unselected">Pin</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<div class="container margin-b-15 center-align">
+	<% if user_signed_in? && @current_ring.user_id == current_user.id %>
+		<%= link_to ring_uncheck_all_vocabularies_ja_path(@current_ring),method: :put do %>
+			全てにチェックをはずす
+		<% end %>
+	<% end %>
+</div>
+<hr>
+
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8" >
+			<div id="vocabularies-chank-home">
+				<table class="table table-sm">
+					<thead class="border-b-double">
+						<tr>
+							<% if user_signed_in?%>
+								<th scope="col" class=""></th>
+							<% end %>
+							<th scope="col" class="">日</th>
+							<% if user_signed_in? && @current_ring.user_id == current_user.id %>
+								<th scope="col" class=""></th>
+							<% end %>
+							<th scope="col" class="">中</th>
+							<th scope="col" class="">Pin</th>
+						</tr>
+					</thead>
+					<tbody class="">
+						<% @vocabularies.each do |vocabulary| %>
+							<tr id="vocabulary_row_<%= vocabulary.id %>">
+								<%= render :partial => 'vocabularies/vocabulary_row_ja', :locals=>{vocabulary: vocabulary} %>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+			<%= paginate @vocabularies %>
+		</div>
+	</div>
+</div>
+<% if @current_ring.user_id == current_user.id %>
+	<%= render :partial => 'footer/footer_not_selected_with_ring_id' %>
+<% else %>
+	<%= render :partial => 'footer/footer_not_selected' %>
+<% end %>

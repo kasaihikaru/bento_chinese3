@@ -1,0 +1,7 @@
+<%= form_for @ring, method: :post do |f| %>
+
+	<%= f.label :name, "単語帳の名前" %><br />
+	<%= f.text_field :name, placeholder: "", class: "", :required => true %>
+
+	<%= f.submit "作成", class: "", id: "" %>
+<% end %>

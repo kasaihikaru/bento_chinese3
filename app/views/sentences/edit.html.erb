@@ -1,0 +1,64 @@
+<%= form_for @sentence, method: :put do |f| %>
+
+	<!-- 短文フォーム -->
+	<div class="">
+		<%= f.text_area :ja, placeholder: "日本語文を書く", :required => true %>
+		<%= f.text_area :ch, placeholder: "中国語文を書く", id: "sentence-ch", :required => true %>
+	</div>
+
+	<!-- 単語フォーム -->
+	<ul class="">
+  <li>
+    <%= f.fields_for :words do |w| %>
+        <%= w.text_field :ja ,placeholder: "単語（日）", class: "w-c-ja" %>
+        <%= w.text_field :ch ,placeholder: "単語（中）", class: "w-c-ch" %><br>
+    <% end %>
+  </li>
+ 	<li>
+		<input type="text" name="new_words[][ja]" class="w-c-ja" placeholder="単語(日)">
+		<input type="text" name="new_words[][ch]" class="w-c-ch" placeholder="単語(中)">
+	</li>
+	<li>
+		<input type="text" name="new_words[][ja]" class="w-c-ja" placeholder="単語(日)">
+		<input type="text" name="new_words[][ch]" class="w-c-ch" placeholder="単語(中)">
+	</li>
+	<li>
+		<input type="text" name="new_words[][ja]" class="w-c-ja" placeholder="単語(日)">
+		<input type="text" name="new_words[][ch]" class="w-c-ch" placeholder="単語(中)">
+	</li>
+	<li>
+		<input type="text" name="new_words[][ja]" class="w-c-ja" placeholder="単語(日)">
+		<input type="text" name="new_words[][ch]" class="w-c-ch" placeholder="単語(中)">
+	</li>
+	<li>
+		<input type="text" name="new_words[][ja]" class="w-c-ja" placeholder="単語(日)">
+		<input type="text" name="new_words[][ch]" class="w-c-ch" placeholder="単語(中)">
+	</li>
+	<li>
+		<input type="text" name="new_words[][ja]" class="w-c-ja" placeholder="単語(日)">
+		<input type="text" name="new_words[][ch]" class="w-c-ch" placeholder="単語(中)">
+	</li>
+	<li>
+		<input type="text" name="new_words[][ja]" class="w-c-ja" placeholder="単語(日)">
+		<input type="text" name="new_words[][ch]" class="w-c-ch" placeholder="単語(中)">
+	</li>
+	<li>
+		<input type="text" name="new_words[][ja]" class="w-c-ja" placeholder="単語(日)">
+		<input type="text" name="new_words[][ch]" class="w-c-ch" placeholder="単語(中)">
+	</li>
+	<li>
+		<input type="text" name="new_words[][ja]" class="w-c-ja" placeholder="単語(日)">
+		<input type="text" name="new_words[][ch]" class="w-c-ch" placeholder="単語(中)">
+	</li>
+	<li>
+		<input type="text" name="new_words[][ja]" class="w-c-ja" placeholder="単語(日)">
+		<input type="text" name="new_words[][ch]" class="w-c-ch" placeholder="単語(中)">
+	</li>
+	</ul>
+
+
+	<%= f.hidden_field :redirect_flg, value: @redirect_flg %>
+
+
+	<%= f.submit "作成", class: "", id: "" %>
+<% end %>

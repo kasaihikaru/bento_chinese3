@@ -1,0 +1,34 @@
+<footer class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 d-none d-md-block topline"></div>
+    <div class="col-xs-3 col-md-2 center-align topline padding-tb-10">
+      <%= link_to root_path do %>
+        <%= render :partial => 'svg/home' %>
+      <% end %>
+    </div>
+    <% if user_signed_in? %>
+      <div class="col-xs-3 col-md-2 center-align topline padding-tb-10">
+        <%= link_to new_sentence_path do %>
+          <%= render :partial => 'svg/+bun' %>
+        <% end %>
+      </div>
+      <div class="col-xs-3 col-md-2 center-align topline padding-tb-10">
+        <%= link_to new_vocabulary_path do %>
+          <%= render :partial => 'svg/+tan' %>
+        <% end %>
+      </div>
+      <div class="col-xs-3 col-md-2 center-align bold-topline padding-tb-10">
+        <%= link_to user_path(current_user) do %>
+          <%= render :partial => 'svg/user_page_colored' %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="col-xs-9 col-md-6 center-align topline padding-tb-10">
+        <%= link_to new_user_registration_path do %>
+          <div class="prim-btn">ユーザー登録をして勉強を始める！</div>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="col-md-2 d-none d-md-block topline"></div>
+  </div>
+</footer>

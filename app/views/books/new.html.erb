@@ -1,0 +1,7 @@
+<%= form_for @book, method: :post do |f| %>
+
+	<%= f.label :name, "短文帳の名前" %><br />
+	<%= f.text_field :name, placeholder: "", class: "", :required => true %>
+
+	<%= f.submit "作成", class: "", id: "" %>
+<% end %>

@@ -1,0 +1,8 @@
+<%= form_for @word, method: :patch do |f| %>
+		<%= f.text_field :ja, placeholder: "日本語", class: "", :required => true %>
+		<%= f.text_field :ch, placeholder: "中国語", class: "", :required => true %><br>
+
+		<%= f.hidden_field :redirect_flg, value: @redirect_flg %>
+
+    <%= f.submit "更新", class: "" %>
+<% end %>

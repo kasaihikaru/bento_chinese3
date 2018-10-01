@@ -1,0 +1,87 @@
+<!-- ログインしてるが、自分じゃない -->
+<% if user_signed_in? && vocabulary.ring.user_id != current_user.id %>
+	<th>
+		<!-- 短文コピーボタン -->
+		<div type="button" class="svg-btn" data-toggle="modal" data-target="#copy-ring-<%= vocabulary.id %>">
+		  <%= render :partial => 'svg/copy_vocabulary_sm' %>
+		</div>
+		<div class="modal fade" id="copy-ring-<%= vocabulary.id %>" tabindex="-1" aria-hidden="true">
+			<%= form_tag vocabulary_copy_path (vocabulary.id) do %>
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<p class="font-18 bold">単語をコピーする</p>
+						</div>
+						<div class="modal-body">
+							どの短文帳に入れますか？<br>
+							一度コピーボタンを押すとちゃんとコピーされていますので、モーダルを閉じて大丈夫です。<br><br>
+				      <div class="form-group radio-wrap text-center">
+				      	<% current_user.rings.each do |ring| %>
+					        <label class="label-radio">
+					          <input type="radio" name="ring_id" value="<%= ring.id %>" required checked/>
+					          <span class="lever"><%= ring.name %></span>
+					        </label>
+				        <% end %>
+				      </div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+			        <%= submit_tag "コピー", class: "prim-btn"%>
+			      </div>
+			    </div>
+			  </div>
+			<% end %>
+		</div><!-- End of 短文コピー -->
+	</th>
+	<th scope="col"><%= vocabulary.ch %></th>
+	<th scope="col"><%= vocabulary.ja %></th>
+	<th scope="col"><%= vocabulary.pin %></th>
+
+
+
+<!-- ログインして、自分 -->
+<% elsif user_signed_in? && vocabulary.ring.user_id == current_user.id %>
+	<% if vocabulary.memorized_ch == false %>
+		<th scope="col">
+			<%= link_to edit_vocabulary_path(vocabulary, redirect_flg: "vocabulary_ch") do %>
+				<%= render :partial => 'svg/edit_sm' %>
+			<% end %>
+		</th>
+		<th scope="col">
+			<a href="https://www.google.co.jp/search?q=<%= vocabulary.ch %>%20中国語" target="_blank">
+				<%= vocabulary.ch %>
+			</a>
+		</th>
+		<th scope="col">
+			<%= link_to vocabulary_check_ch_path(vocabulary), class: "", method: :put, remote: true do %>
+				<%= render :partial => 'svg/check_sm' %>
+			<% end %>
+		</th>
+		<th scope="col"><%= vocabulary.ja %></th>
+		<th scope="col"><%= vocabulary.pin %></th>
+	<% else %>
+		<th scope="col" class="bg-second">
+			<%= link_to edit_vocabulary_path(vocabulary) do %>
+				<%= render :partial => 'svg/edit_sm' %>
+			<% end %>
+		</th>
+		<th scope="col" class="bg-second"><%= vocabulary.ch %></th>
+		<th scope="col" class="bg-second">
+			<%= link_to vocabulary_uncheck_ch_path(vocabulary), class: "", method: :put, remote: true do %>
+				<%= render :partial => 'svg/check_sm' %>
+			<% end %>
+		</th>
+		<th scope="col" class="bg-second"><%= vocabulary.ja %></th>
+		<th scope="col" class="bg-second"><%= vocabulary.pin %></th>
+	<% end %>
+
+
+
+
+
+<!-- ログインしていない -->
+<% else %>
+	<th scope="col"><%= vocabulary.ch %></th>
+	<th scope="col"><%= vocabulary.ja %></th>
+	<th scope="col"><%= vocabulary.pin %></th>
+<% end %>

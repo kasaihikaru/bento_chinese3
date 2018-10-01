@@ -1,0 +1,68 @@
+<div class="login">
+  <h2>ユーザー設定</h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="field">
+      <%= f.label :image, "アイコン画像" %><br />
+      <%= image_tag current_user.image.url, alt: "icon", class: "image" if current_user.image? %><br>
+      <%= f.file_field :image %>
+    </div>
+
+    <div class="field">
+      <%= f.label :name, "名前" %><br />
+      <%= f.text_field :name, autofocus: true, maxlength: "8", placeholder: "BENTO" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :introduction, "自己紹介" %><br />
+      <%= f.text_area :introduction, autofocus: true, maxlength: "2000", placeholder: "勉強の目標や、プロフィールを書こう！" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :link, "リンク" %><br />
+      <%= f.text_field :link, autofocus: true, maxlength: "1000", placeholder: "ブログやSNSなどのリンクを貼ることができます" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :email, "メールアドレス(非公開)" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "bento@example.com" %>
+    </div>
+
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :password, "パスワード" %>
+      <% if @minimum_password_length %>
+      <%= @minimum_password_length %>文字以上
+      <% end %><br />
+      <p class="field-explanation">変更する場合は新しいパスワードを入れてください</p>
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation, "パスワード確認" %>
+      <p class="field-explanation">変更する場合は新しいパスワードを入れてください</p>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+
+
+    <div class="actions">
+      <%= f.submit "Update" %>
+    </div>
+  <% end %>
+
+
+  <%= link_to destroy_user_session_path, class: "", method: :delete do %>
+    ログアウト
+  <% end %>
+
+
+  <p><%= button_to "退会して勉強をやめる", registration_path(resource_name), data: { confirm: "真的吗？！" }, method: :delete %></p>
+
+  <%= link_to "Back", :back %>
+</div>

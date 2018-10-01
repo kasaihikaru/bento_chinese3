@@ -1,0 +1,93 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8" >
+			<div class="home-navi clearfix">
+				<%= link_to sentences_path do %>
+					<div class="btn-unselected float-left">文</div>
+				<% end %>
+				<div class="btn-selected float-left">単</div>
+				<div class="float-right">
+					<form class="underline">
+						<input class="border-none" type="search" placeholder="単語を検索" style="width: 100px;">
+						<button class="svg-btn letter-bottom" type="submit"><%= render :partial => 'svg/search' %></button>
+					</form>
+				</div>
+			</div>
+			<div id="vocabularies-chank-home">
+				<% @vocabularies.each do |vocabulary| %>
+					<div class="vocabulary-chank margin-b-30">
+						<div class="clearfix margin-b-5">
+							<div class="float-left icon">
+								<% if vocabulary.ring.user.image? %>
+									<%= link_to user_path(vocabulary.ring.user) do %>
+										<%= image_tag vocabulary.ring.user.image.thumb.url, :alt => "icon", :class => "icon" %>
+									<% end %>
+								<% else %>
+									<%= link_to user_path(vocabulary.ring.user) do %>
+										<img class="icon" alt="no-icon" src="/images/no-icon.png">
+									<% end %>
+								<% end %>
+							</div>
+							<div class="float-left font-15 margin-5"><%= vocabulary.ring.name %></div>
+
+							<!-- コピーボタン or 編集ボタン-->
+							<div class="float-right font-12 thin-link">
+								<% if user_signed_in? && vocabulary.ring.user_id != current_user.id %>
+									<!-- 短文コピーボタン -->
+									<div type="button" class="float-right svg-btn" data-toggle="modal" data-target="#copy-ring">
+									  <%= render :partial => 'svg/copy_vocabulary' %>
+									</div>
+									<div class="modal fade" id="copy-ring" tabindex="-1" aria-hidden="true">
+										<%= form_tag vocabulary_copy_path (vocabulary.id) do %>
+											<div class="modal-dialog modal-dialog-centered" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<p class="font-18 bold">短文をコピーする</p>
+													</div>
+													<div class="modal-body">
+														どの短文帳に入れますか？<br>
+														一度コピーボタンを押すとちゃんとコピーされていますので、モーダルを閉じて大丈夫です。<br><br>
+											      <div class="form-group radio-wrap text-center">
+											      	<% current_user.rings.each do |ring| %>
+												        <label class="label-radio">
+												          <input type="radio" name="ring_id" value="<%= ring.id %>" required checked/>
+												          <span class="lever"><%= ring.name %></span>
+												        </label>
+											        <% end %>
+											      </div>
+										      </div>
+										      <div class="modal-footer">
+										        <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+										        <%= submit_tag "コピー", class: "prim-btn"%>
+										      </div>
+										    </div>
+										  </div>
+										<% end %>
+									</div><!-- End of 短文コピー -->
+								<% end %>
+								<% if user_signed_in? && vocabulary.ring.user_id == current_user.id %>
+									<%= link_to edit_vocabulary_path(vocabulary) do %>
+										編集
+									<% end %>
+								<% end %>
+							</div>
+						</div><!-- End of clearfix -->
+
+						<table class="table table-sm">
+							<tbody class="center-align">
+								<tr>
+									<th scope="col" class="center-align"><%= vocabulary.ja %></th>
+									<th scope="col" class="center-align"><%= vocabulary.ch %></th>
+									<th scope="col" class="center-align"><%= vocabulary.pin %></th>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				<% end %>
+				<%= paginate @vocabularies %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%= render :partial => 'footer/footer_home_selected' %>

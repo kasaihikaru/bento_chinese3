@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8" >
+
+    <!-- ########  ユーザープロフィール ########-->
+      <div class="profile row">
+        <div class="col-xs-2 padding-0">
+          <% if @user.image? %>
+            <%= image_tag @user.image.url, :alt => "icon", :class=>"icon center" %>
+          <% else %>
+            <img alt="no-icon" src="/images/no-icon.png" class="icon center">
+          <% end %>
+        </div>
+        <div class="col-xs-8">
+          <strong class="font-18"><%= @user.name %></strong>
+          <p><%= simple_format(@user.introduction) %></p>
+          <p><%= render :partial => 'svg/link' %><a href="<%= @user.link %>" target="_blank" class="font-12"><%= @user.link %></a></p>
+        </div>
+        <div class="col-xs-1">
+          <% if user_signed_in? && current_user.id == @user.id %>
+            <%= link_to edit_user_registration_path(current_user) do %>
+              <%= render :partial => 'svg/setting' %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <hr>
+
+
+    <!-- ########  短文帳、単語帳一覧 ########-->
+      <div class="clearfix margin-b-15">
+        <strong class="font-18 float-left"><%= render :partial => 'svg/book' %>&ensp;短文帳</strong>
+        <% if user_signed_in? && current_user.id == @user.id %>
+          <div class="float-right">
+            <%= form_for @book, method: :post do |f| %>
+              <%= f.text_field :name, placeholder: "新しい短文帳", class: "border-none underline", :required => true, style: "width: 100px;" %>
+              <%= f.submit "作成", class: "second-btn", id: "" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="row margin-b-80 font-18">
+        <% @books.each do |book| %>
+          <div class="col-xs-6" >
+            <a href="/books/<%= book.id %>/sentence_ja">
+              <%= book.name %>
+            </a>
+          </div>
+        <% end %>
+      </div>
+      <div class="clearfix margin-b-15">
+        <strong class="font-18"><%= render :partial => 'svg/words_s' %>&ensp;単語帳</strong>
+        <% if user_signed_in? && current_user.id == @user.id %>
+          <div class="float-right">
+            <%= form_for @ring, method: :post do |f| %>
+              <%= f.text_field :name, placeholder: "新しい単語帳", class: "border-none underline", :required => true, style: "width: 100px;" %>
+              <%= f.submit "作成", class: "second-btn", id: "" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="row margin-b-80  font-18">
+        <% @rings.each do |ring| %>
+          <div class="col-xs-6" >
+            <a href="/rings/<%= ring.id %>/vocabulary_ja">
+              <%= ring.name %>
+            </a>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render :partial => 'footer/footer_userpage_selected' %>
