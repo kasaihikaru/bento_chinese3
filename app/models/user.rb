@@ -11,4 +11,9 @@ class User < ApplicationRecord
 
   # ファイルアップロード処理
   mount_uploader :image, ImageUploader
+
+  # trueだと、ブラウザ閉じてもログイン保持できる
+  def remember_me
+    true
+  end
 end

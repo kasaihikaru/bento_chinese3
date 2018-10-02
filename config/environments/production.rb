@@ -93,4 +93,19 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   GA.tracker = "UA-126755985-1" #For GA
+
+
+  # for mail認証 送信用アドレス設定
+  config.action_mailer.default_url_options = { :host => 'https://bento-chinese3.herokuapp.com/' }
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => 'smtp.gmail.com',
+    :user_name => ENV['gmail_account'], #gmailアドレス
+    :password => ENV['gmail_password'], #gmailパスワード
+    :authentication => 'login',
+  }
+
+
 end
