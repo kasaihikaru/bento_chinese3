@@ -3,7 +3,7 @@ class RingsController < ApplicationController
 	#-----------------------get-----------------------
 	def vocabulary_ja
 		@current_ring = Ring.find(ring_id_params)
-		@vocabularies = @current_ring.vocabularies.active.includes(ring: :user).page(params[:page]).per(5)
+		@vocabularies = @current_ring.vocabularies.active.includes(ring: :user).page(params[:page]).per(30)
 
 		#ページ遷移kaminariコントロール用クエリ
 		@vocabulary_page = request.query_string.delete("page=").to_i
@@ -11,7 +11,7 @@ class RingsController < ApplicationController
 
 	def vocabulary_ch
 		@current_ring = Ring.find(ring_id_params)
-		@vocabularies = @current_ring.vocabularies.active.includes(ring: :user).page(params[:page]).per(5)
+		@vocabularies = @current_ring.vocabularies.active.includes(ring: :user).page(params[:page]).per(30)
 
 		#ページ遷移kaminariコントロール用クエリ
 		@vocabulary_page = request.query_string.delete("page=").to_i
@@ -19,7 +19,7 @@ class RingsController < ApplicationController
 
 	def vocabulary_pin
 		@current_ring = Ring.find(ring_id_params)
-		@vocabularies = @current_ring.vocabularies.active.includes(ring: :user).page(params[:page]).per(5)
+		@vocabularies = @current_ring.vocabularies.active.includes(ring: :user).page(params[:page]).per(30)
 
 		#ページ遷移kaminariコントロール用クエリ
 		@vocabulary_page = request.query_string.delete("page=").to_i
