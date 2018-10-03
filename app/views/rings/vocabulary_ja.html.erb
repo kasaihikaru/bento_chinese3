@@ -36,17 +36,17 @@
 
 <div class="container margin-b-15">
 	<div class="row center-align">
-		<%= link_to ring_vocabulary_ja_path(@current_ring) do %>
+		<%= link_to ring_vocabulary_ja_path(@current_ring, page: @vocabulary_page) do %>
 			<div class="col-xs-4 padding-2">
 				<div class="btn-selected">日</div>
 			</div>
 		<% end %>
-		<%= link_to ring_vocabulary_ch_path(@current_ring) do %>
+		<%= link_to ring_vocabulary_ch_path(@current_ring, page: @vocabulary_page) do %>
 			<div class="col-xs-4 padding-2">
 				<div class="btn-unselected">中</div>
 			</div>
 		<% end %>
-		<%= link_to ring_vocabulary_pin_path(@current_ring) do %>
+		<%= link_to ring_vocabulary_pin_path(@current_ring, page: @vocabulary_page) do %>
 			<div class="col-xs-4 padding-2">
 				<div class="btn-unselected">Pin</div>
 			</div>
@@ -85,7 +85,7 @@
 					<tbody class="">
 						<% @vocabularies.each do |vocabulary| %>
 							<tr id="vocabulary_row_<%= vocabulary.id %>">
-								<%= render :partial => 'vocabularies/vocabulary_row_ja', :locals=>{vocabulary: vocabulary} %>
+								<%= render :partial => 'vocabularies/vocabulary_row_ja', :locals=>{vocabulary: vocabulary, vocabulary_page: @vocabulary_page} %>
 							</tr>
 						<% end %>
 					</tbody>

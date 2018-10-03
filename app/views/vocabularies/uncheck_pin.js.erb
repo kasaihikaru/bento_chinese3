@@ -1,1 +1,1 @@
-$("#vocabulary_row_<%= @vocabulary.id %>").html("<%= j(render :partial => 'vocabularies/vocabulary_row_pin', :locals=>{vocabulary: @vocabulary}) %>");
+$("#vocabulary_row_<%= @vocabulary.id %>").html("<%= j(render :partial => 'vocabularies/vocabulary_row_pin', :locals=>{vocabulary: @vocabulary, vocabulary_page: @vocabulary_page}) %>");

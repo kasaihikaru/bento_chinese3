@@ -3,6 +3,7 @@
 		<%= f.text_field :ch, placeholder: "中国語", class: "", :required => true %><br>
 
 		<%= f.hidden_field :redirect_flg, value: @redirect_flg %>
+		<%= f.hidden_field :vocabulary_page, value: @vocabulary_page %>
 
     <%= f.submit "更新", class: "" %>
 <% end %>

@@ -15,6 +15,7 @@ class VocabulariesController < ApplicationController
 	def edit
 		@vocabulary = Vocabulary.find(id_params)
 		@redirect_flg = params[:redirect_flg]
+		@vocabulary_page = params[:vocabulary_page]
 	end
 
 	def edit_pin
@@ -43,11 +44,11 @@ class VocabulariesController < ApplicationController
 		ring = vocabulary.ring
 
 		if params[:vocabulary][:redirect_flg] == "vocabulary_ja"
-			redirect_to ring_vocabulary_ja_path(ring)
+			redirect_to ring_vocabulary_ja_path(ring, page: params[:vocabulary][:vocabulary_page])
 		elsif params[:vocabulary][:redirect_flg] == "vocabulary_ch"
-			redirect_to ring_vocabulary_ch_path(ring)
+			redirect_to ring_vocabulary_ch_path(ring, page: params[:vocabulary][:vocabulary_page])
 		elsif params[:vocabulary][:redirect_flg] == "vocabulary_pin"
-			redirect_to ring_vocabulary_pin_path(ring)
+			redirect_to ring_vocabulary_pin_path(ring, page: params[:vocabulary][:vocabulary_page])
 		else
 			redirect_to vocabularies_path
 		end
@@ -64,31 +65,49 @@ class VocabulariesController < ApplicationController
 	def check_ja
 		@vocabulary = Vocabulary.find(vocabulary_id_params)
 		@vocabulary.update(memorized_ja: 1)
+
+		#ページ遷移kaminariコントロール用クエリ
+		@vocabulary_page = request.query_string.delete("page=").to_i
 	end
 
 	def check_ch
 		@vocabulary = Vocabulary.find(vocabulary_id_params)
 		@vocabulary.update(memorized_ch: 1)
+
+		#ページ遷移kaminariコントロール用クエリ
+		@vocabulary_page = request.query_string.delete("page=").to_i
 	end
 
 	def check_pin
 		@vocabulary = Vocabulary.find(vocabulary_id_params)
 		@vocabulary.update(memorized_pin: 1)
+
+		#ページ遷移kaminariコントロール用クエリ
+		@vocabulary_page = request.query_string.delete("page=").to_i
 	end
 
 	def uncheck_ja
 		@vocabulary = Vocabulary.find(vocabulary_id_params)
 		@vocabulary.update(memorized_ja: 0)
+
+		#ページ遷移kaminariコントロール用クエリ
+		@vocabulary_page = request.query_string.delete("page=").to_i
 	end
 
 	def uncheck_ch
 		@vocabulary = Vocabulary.find(vocabulary_id_params)
 		@vocabulary.update(memorized_ch: 0)
+
+		#ページ遷移kaminariコントロール用クエリ
+		@vocabulary_page = request.query_string.delete("page=").to_i
 	end
 
 	def uncheck_pin
 		@vocabulary = Vocabulary.find(vocabulary_id_params)
 		@vocabulary.update(memorized_pin: 0)
+
+		#ページ遷移kaminariコントロール用クエリ
+		@vocabulary_page = request.query_string.delete("page=").to_i
 	end
 
 	def update_pin

@@ -5,16 +5,25 @@ class BooksController < ApplicationController
 	def sentence_ja
 		@current_book = Book.find(book_id_params)
 		@sentences = @current_book.sentences.unmemorized_ja.active.includes(:words, book: :user).page(params[:page]).per(10)
+
+		#ページ遷移kaminariコントロール用クエリ
+		@sentence_page = request.query_string.delete("page=").to_i
 	end
 
 	def sentence_ch
 		@current_book = Book.find(book_id_params)
 		@sentences = @current_book.sentences.unmemorized_ch.active.includes(:words, book: :user).page(params[:page]).per(10)
+
+		#ページ遷移kaminariコントロール用クエリ
+		@sentence_page = request.query_string.delete("page=").to_i
 	end
 
 	def sentence_pin
 		@current_book = Book.find(book_id_params)
 		@sentences = @current_book.sentences.unmemorized_pin.active.includes(:words, book: :user).page(params[:page]).per(10)
+
+		#ページ遷移kaminariコントロール用クエリ
+		@sentence_page = request.query_string.delete("page=").to_i
 	end
 
 	def word_ja

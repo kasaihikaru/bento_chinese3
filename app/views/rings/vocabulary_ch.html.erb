@@ -28,7 +28,7 @@
 	<% if user_signed_in? && @current_ring.user_id == current_user.id %>
 		<%= form_for @current_ring, method: :put do |f| %>
 		  <%= f.text_field :name, value: @current_ring.name, class: "border-none font-18 margin-t-15 bold width-80per", :required => true%>
-		  <%= f.hidden_field :redirect_flg, value: "vocabulary_ch" %>
+		  <%= f.hidden_field :redirect_flg, value: "vocabulary_ch"  %>
 		  <%= f.submit "変更", class: "second-btn float-right margin-t-15", id: "" %>
 		<% end %>
 	<% end %>
@@ -36,17 +36,17 @@
 
 <div class="container margin-b-15">
 	<div class="row center-align">
-		<%= link_to ring_vocabulary_ja_path(@current_ring) do %>
+		<%= link_to ring_vocabulary_ja_path(@current_ring, page: @vocabulary_page) do %>
 			<div class="col-xs-4 padding-2">
 				<div class="btn-unselected">日</div>
 			</div>
 		<% end %>
-		<%= link_to ring_vocabulary_ch_path(@current_ring) do %>
+		<%= link_to ring_vocabulary_ch_path(@current_ring, page: @vocabulary_page) do %>
 			<div class="col-xs-4 padding-2">
 				<div class="btn-selected">中</div>
 			</div>
 		<% end %>
-		<%= link_to ring_vocabulary_pin_path(@current_ring) do %>
+		<%= link_to ring_vocabulary_pin_path(@current_ring, page: @vocabulary_page) do %>
 			<div class="col-xs-4 padding-2">
 				<div class="btn-unselected">Pin</div>
 			</div>
@@ -85,7 +85,7 @@
 					<tbody class="">
 						<% @vocabularies.each do |vocabulary| %>
 							<tr id="vocabulary_row_<%= vocabulary.id %>">
-								<%= render :partial => 'vocabularies/vocabulary_row_ch', :locals=>{vocabulary: vocabulary} %>
+								<%= render :partial => 'vocabularies/vocabulary_row_ch', :locals=>{vocabulary: vocabulary, vocabulary_page: @vocabulary_page} %>
 							</tr>
 						<% end %>
 					</tbody>

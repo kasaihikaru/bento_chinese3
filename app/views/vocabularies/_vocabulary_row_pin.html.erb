@@ -43,7 +43,7 @@
 <% elsif user_signed_in? && vocabulary.ring.user_id == current_user.id %>
 	<% if vocabulary.memorized_pin == false %>
 		<th scope="col">
-			<%= link_to edit_vocabulary_path(vocabulary, redirect_flg: "vocabulary_pin") do %>
+			<%= link_to edit_vocabulary_path(vocabulary, redirect_flg: "vocabulary_pin", vocabulary_page: vocabulary_page) do %>
 				<%= render :partial => 'svg/edit_sm' %>
 			<% end %>
 		</th>
