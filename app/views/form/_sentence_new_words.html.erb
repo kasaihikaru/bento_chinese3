@@ -1,62 +1,259 @@
-<ul class="">
-  <li>
-    <%= f.fields_for :words do |w| %>
-        <%= w.text_field :ja ,placeholder: "単語（日）", class: "w-c-ja" %>
-        <%= w.text_field :ch ,placeholder: "単語（中）", class: "w-c-ch" %>
-    <% end %>
-  </li>
-  <li>
-    <%= f.fields_for :words do |w| %>
-        <%= w.text_field :ja ,placeholder: "単語（日）", class: "w-c-ja" %>
-        <%= w.text_field :ch ,placeholder: "単語（中）", class: "w-c-ch" %>
-    <% end %>
-  </li>
-  <li>
-    <%= f.fields_for :words do |w| %>
-        <%= w.text_field :ja ,placeholder: "単語（日）", class: "w-c-ja" %>
-        <%= w.text_field :ch ,placeholder: "単語（中）", class: "w-c-ch" %>
-    <% end %>
-  </li>
-  <li>
-    <%= f.fields_for :words do |w| %>
-        <%= w.text_field :ja ,placeholder: "単語（日）", class: "w-c-ja" %>
-        <%= w.text_field :ch ,placeholder: "単語（中）", class: "w-c-ch" %>
-    <% end %>
-  </li>
-  <li>
-    <%= f.fields_for :words do |w| %>
-        <%= w.text_field :ja ,placeholder: "単語（日）", class: "w-c-ja" %>
-        <%= w.text_field :ch ,placeholder: "単語（中）", class: "w-c-ch" %>
-    <% end %>
-  </li>
-  <li>
-    <%= f.fields_for :words do |w| %>
-        <%= w.text_field :ja ,placeholder: "単語（日）", class: "w-c-ja" %>
-        <%= w.text_field :ch ,placeholder: "単語（中）", class: "w-c-ch" %>
-    <% end %>
-  </li>
-  <li>
-    <%= f.fields_for :words do |w| %>
-        <%= w.text_field :ja ,placeholder: "単語（日）", class: "w-c-ja" %>
-        <%= w.text_field :ch ,placeholder: "単語（中）", class: "w-c-ch" %>
-    <% end %>
-  </li>
-  <li>
-    <%= f.fields_for :words do |w| %>
-        <%= w.text_field :ja ,placeholder: "単語（日）", class: "w-c-ja" %>
-        <%= w.text_field :ch ,placeholder: "単語（中）", class: "w-c-ch" %>
-    <% end %>
-  </li>
-  <li>
-    <%= f.fields_for :words do |w| %>
-        <%= w.text_field :ja ,placeholder: "単語（日）", class: "w-c-ja" %>
-        <%= w.text_field :ch ,placeholder: "単語（中）", class: "w-c-ch" %>
-    <% end %>
-  </li>
-  <li>
-    <%= f.fields_for :words do |w| %>
-        <%= w.text_field :ja ,placeholder: "単語（日）", class: "w-c-ja" %>
-        <%= w.text_field :ch ,placeholder: "単語（中）", class: "w-c-ch" %>
-    <% end %>
-  </li>
-</ul>
+<div class="clearfix">
+  <%= f.fields_for :words do |w| %>
+      <div id="word_ja_0" class="float-left">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ja ,placeholder: "単語（日）", class: "float-left" %>
+      <div id="word_ch_0" class="float-left margin-l-10">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
+  <% end %>
+</div>
+<div class="clearfix">
+  <%= f.fields_for :words do |w| %>
+      <div id="word_ja_1" class="float-left">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ja ,placeholder: "単語（日）", class: "float-left" %>
+      <div id="word_ch_1" class="float-left margin-l-10">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
+  <% end %>
+</div>
+<div class="clearfix">
+  <%= f.fields_for :words do |w| %>
+      <div id="word_ja_2" class="float-left">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ja ,placeholder: "単語（日）", class: "float-left" %>
+      <div id="word_ch_2" class="float-left margin-l-10">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
+  <% end %>
+</div>
+<div class="clearfix">
+  <%= f.fields_for :words do |w| %>
+      <div id="word_ja_3" class="float-left">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ja ,placeholder: "単語（日）", class: "float-left" %>
+      <div id="word_ch_3" class="float-left margin-l-10">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
+  <% end %>
+</div>
+<div class="clearfix">
+  <%= f.fields_for :words do |w| %>
+      <div id="word_ja_4" class="float-left">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ja ,placeholder: "単語（日）", class: "float-left" %>
+      <div id="word_ch_4" class="float-left margin-l-10">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
+  <% end %>
+</div>
+<div class="clearfix">
+  <%= f.fields_for :words do |w| %>
+      <div id="word_ja_5" class="float-left">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ja ,placeholder: "単語（日）", class: "float-left" %>
+      <div id="word_ch_5" class="float-left margin-l-10">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
+  <% end %>
+</div>
+<div class="clearfix">
+  <%= f.fields_for :words do |w| %>
+      <div id="word_ja_6" class="float-left">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ja ,placeholder: "単語（日）", class: "float-left" %>
+      <div id="word_ch_6" class="float-left margin-l-10">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
+  <% end %>
+</div>
+<div class="clearfix">
+  <%= f.fields_for :words do |w| %>
+      <div id="word_ja_7" class="float-left">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ja ,placeholder: "単語（日）", class: "float-left" %>
+      <div id="word_ch_7" class="float-left margin-l-10">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
+  <% end %>
+</div>
+<div class="clearfix">
+  <%= f.fields_for :words do |w| %>
+      <div id="word_ja_8" class="float-left">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ja ,placeholder: "単語（日）", class: "float-left" %>
+      <div id="word_ch_8" class="float-left margin-l-10">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
+  <% end %>
+</div>
+<div class="clearfix">
+  <%= f.fields_for :words do |w| %>
+      <div id="word_ja_9" class="float-left">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ja ,placeholder: "単語（日）", class: "float-left" %>
+      <div id="word_ch_9" class="float-left margin-l-10">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
+  <% end %>
+</div>
+<div class="clearfix">
+  <%= f.fields_for :words do |w| %>
+      <div id="word_ja_10" class="float-left">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ja ,placeholder: "単語（日）", class: "float-left" %>
+      <div id="word_ch_10" class="float-left margin-l-10">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
+  <% end %>
+</div>
+<div class="clearfix">
+  <%= f.fields_for :words do |w| %>
+      <div id="word_ja_11" class="float-left">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ja ,placeholder: "単語（日）", class: "float-left" %>
+      <div id="word_ch_11" class="float-left margin-l-10">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
+  <% end %>
+</div>
+<div class="clearfix">
+  <%= f.fields_for :words do |w| %>
+      <div id="word_ja_12" class="float-left">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ja ,placeholder: "単語（日）", class: "float-left" %>
+      <div id="word_ch_12" class="float-left margin-l-10">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
+  <% end %>
+</div>
+<div class="clearfix">
+  <%= f.fields_for :words do |w| %>
+      <div id="word_ja_13" class="float-left">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ja ,placeholder: "単語（日）", class: "float-left" %>
+      <div id="word_ch_13" class="float-left margin-l-10">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
+  <% end %>
+</div>
+<div class="clearfix">
+  <%= f.fields_for :words do |w| %>
+      <div id="word_ja_14" class="float-left">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ja ,placeholder: "単語（日）", class: "float-left" %>
+      <div id="word_ch_14" class="float-left margin-l-10">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
+  <% end %>
+</div>
+<div class="clearfix">
+  <%= f.fields_for :words do |w| %>
+      <div id="word_ja_15" class="float-left">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ja ,placeholder: "単語（日）", class: "float-left" %>
+      <div id="word_ch_15" class="float-left margin-l-10">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
+  <% end %>
+</div>
+<div class="clearfix">
+  <%= f.fields_for :words do |w| %>
+      <div id="word_ja_16" class="float-left">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ja ,placeholder: "単語（日）", class: "float-left" %>
+      <div id="word_ch_16" class="float-left margin-l-10">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
+  <% end %>
+</div>
+<div class="clearfix">
+  <%= f.fields_for :words do |w| %>
+      <div id="word_ja_17" class="float-left">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ja ,placeholder: "単語（日）", class: "float-left" %>
+      <div id="word_ch_17" class="float-left margin-l-10">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
+  <% end %>
+</div>
+<div class="clearfix">
+  <%= f.fields_for :words do |w| %>
+      <div id="word_ja_18" class="float-left">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ja ,placeholder: "単語（日）", class: "float-left" %>
+      <div id="word_ch_18" class="float-left margin-l-10">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
+  <% end %>
+</div>
+<div class="clearfix">
+  <%= f.fields_for :words do |w| %>
+      <div id="word_ja_19" class="float-left">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ja ,placeholder: "単語（日）", class: "float-left" %>
+      <div id="word_ch_19" class="float-left margin-l-10">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
+  <% end %>
+</div>
+<div class="clearfix">
+  <%= f.fields_for :words do |w| %>
+      <div id="word_ja_20" class="float-left">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ja ,placeholder: "単語（日）", class: "float-left" %>
+      <div id="word_ch_20" class="float-left margin-l-10">
+        <%= render :partial => 'svg/google' %>
+      </div>
+      <%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
+  <% end %>
+</div>
+<!-- 
+<div>
+  <%= f.fields_for :words do |w| %>
+      <%= w.text_field :ja ,placeholder: "単語（日）", class: "" %>
+      <%= w.text_field :ch ,placeholder: "単語（中）", class: "" %>
+  <% end %>
+</div> -->
