@@ -1,30 +1,83 @@
-<%= form_tag("/vocabularies", method: :post) do %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8" >
 
-	<!-- 単語帳選択 -->
-	<div class="">
-		<%= label_tag(:ring, "保存先の単語帳") %>
-    <% if params[:ring_id].present? %>
-      <%= select_tag :ring_id, options_from_collection_for_select(@myrings, :id, :name, selected: params[:ring_id]) %>
-    <% else %>
-      <%= select_tag :ring_id, options_from_collection_for_select(@myrings, :id, :name) %>
-    <% end %>
-	</div>
+      <p class="font-30 margin-t-15">単語を作成する</p>
+      <%= form_tag("/vocabularies", method: :post) do %>
+
+      	<!-- 単語帳選択 -->
+      	<div class="margin-b-30">
+      		<%= label_tag(:ring, "保存先の単語帳") %><br>
+          <% if params[:ring_id].present? %>
+            <%= select_tag :ring_id, options_from_collection_for_select(@myrings, :id, :name, selected: params[:ring_id]) %>
+          <% else %>
+            <%= select_tag :ring_id, options_from_collection_for_select(@myrings, :id, :name) %>
+          <% end %>
+      	</div>
 
 
-	<!-- 単語フォーム -->
-  <%= text_field_tag "vocabulary[1][ja]", "",  :placeholder=> "日本語" %>
-  <%= text_field_tag "vocabulary[1][ch]", "", placeholder: "中国語" %><br>
-  <%= text_field_tag "vocabulary[2][ja]", "",  :placeholder=> "日本語" %>
-  <%= text_field_tag "vocabulary[2][ch]", "", placeholder: "中国語" %><br>
-  <%= text_field_tag "vocabulary[3][ja]", "",  :placeholder=> "日本語" %>
-  <%= text_field_tag "vocabulary[3][ch]", "", placeholder: "中国語" %><br>
-  <%= text_field_tag "vocabulary[4][ja]", "",  :placeholder=> "日本語" %>
-  <%= text_field_tag "vocabulary[4][ch]", "", placeholder: "中国語" %><br>
-  <%= text_field_tag "vocabulary[5][ja]", "",  :placeholder=> "日本語" %>
-  <%= text_field_tag "vocabulary[5][ch]", "", placeholder: "中国語" %><br>
+      	<!-- 単語フォーム -->
 
-  <%= submit_tag("単語を追加") %>
+      <div class="clearfix">
+        <div id="vocabulary_ja_1" class="float-left">
+          <%= render :partial => 'svg/google' %>
+        </div>
+        <%= text_field_tag "vocabulary[1][ja]", "",  :placeholder=> "日本語", class: "float-left" %>
+        <div id="vocabulary_ch_1" class="float-left margin-l-10">
+            <%= render :partial => 'svg/google' %>
+        </div>
+        <%= text_field_tag "vocabulary[1][ch]", "", placeholder: "中国語", class: "float-left" %>
+      </div>
 
-<% end %>
+      <div class="clearfix">
+        <div id="vocabulary_ja_2" class="float-left">
+          <%= render :partial => 'svg/google' %>
+        </div>
+        <%= text_field_tag "vocabulary[2][ja]", "",  :placeholder=> "日本語", class: "float-left" %>
+        <div id="vocabulary_ch_2" class="float-left margin-l-10">
+            <%= render :partial => 'svg/google' %>
+        </div>
+        <%= text_field_tag "vocabulary[2][ch]", "", placeholder: "中国語", class: "float-left" %>
+      </div>
+
+      <div class="clearfix">
+        <div id="vocabulary_ja_3" class="float-left">
+          <%= render :partial => 'svg/google' %>
+        </div>
+        <%= text_field_tag "vocabulary[3][ja]", "",  :placeholder=> "日本語", class: "float-left" %>
+        <div id="vocabulary_ch_3" class="float-left margin-l-10">
+            <%= render :partial => 'svg/google' %>
+        </div>
+        <%= text_field_tag "vocabulary[3][ch]", "", placeholder: "中国語", class: "float-left" %>
+      </div>
+
+      <div class="clearfix">
+        <div id="vocabulary_ja_4" class="float-left">
+          <%= render :partial => 'svg/google' %>
+        </div>
+        <%= text_field_tag "vocabulary[4][ja]", "",  :placeholder=> "日本語", class: "float-left" %>
+        <div id="vocabulary_ch_4" class="float-left margin-l-10">
+            <%= render :partial => 'svg/google' %>
+        </div>
+        <%= text_field_tag "vocabulary[4][ch]", "", placeholder: "中国語", class: "float-left" %>
+      </div>
+
+      <div class="clearfix">
+        <div id="vocabulary_ja_5" class="float-left">
+          <%= render :partial => 'svg/google' %>
+        </div>
+        <%= text_field_tag "vocabulary[5][ja]", "",  :placeholder=> "日本語", class: "float-left" %>
+        <div id="vocabulary_ch_5" class="float-left margin-l-10">
+            <%= render :partial => 'svg/google' %>
+        </div>
+        <%= text_field_tag "vocabulary[5][ch]", "", placeholder: "中国語", class: "float-left" %>
+      </div>
+
+        <%= submit_tag "単語を追加", class: "margin-tb-50 prim-btn" %>
+
+      <% end %>
+    </div><!-- End of col-12 -->
+  </div><!-- End of row -->
+</div><!-- End of container -->
 
 <%= render :partial => 'footer/footer_new_vocabulary_selected' %>

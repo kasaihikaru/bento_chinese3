@@ -1,65 +1,163 @@
-<%= form_for @sentence, method: :put do |f| %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8" >
 
-	<!-- 短文フォーム -->
-	<div class="">
-		<%= f.text_area :ja, placeholder: "日本語文を書く", :required => true %>
-		<%= f.text_area :ch, placeholder: "中国語文を書く", id: "sentence-ch", :required => true %>
-	</div>
+			<p class="font-30 margin-t-15">短文を編集する</p>
+			<%= form_for @sentence, method: :put do |f| %>
 
-	<!-- 単語フォーム -->
-	<ul class="">
-  <li>
-    <%= f.fields_for :words do |w| %>
-        <%= w.text_field :ja ,placeholder: "単語（日）", class: "w-c-ja" %>
-        <%= w.text_field :ch ,placeholder: "単語（中）", class: "w-c-ch" %><br>
-    <% end %>
-  </li>
- 	<li>
-		<input type="text" name="new_words[][ja]" class="w-c-ja" placeholder="単語(日)">
-		<input type="text" name="new_words[][ch]" class="w-c-ch" placeholder="単語(中)">
-	</li>
-	<li>
-		<input type="text" name="new_words[][ja]" class="w-c-ja" placeholder="単語(日)">
-		<input type="text" name="new_words[][ch]" class="w-c-ch" placeholder="単語(中)">
-	</li>
-	<li>
-		<input type="text" name="new_words[][ja]" class="w-c-ja" placeholder="単語(日)">
-		<input type="text" name="new_words[][ch]" class="w-c-ch" placeholder="単語(中)">
-	</li>
-	<li>
-		<input type="text" name="new_words[][ja]" class="w-c-ja" placeholder="単語(日)">
-		<input type="text" name="new_words[][ch]" class="w-c-ch" placeholder="単語(中)">
-	</li>
-	<li>
-		<input type="text" name="new_words[][ja]" class="w-c-ja" placeholder="単語(日)">
-		<input type="text" name="new_words[][ch]" class="w-c-ch" placeholder="単語(中)">
-	</li>
-	<li>
-		<input type="text" name="new_words[][ja]" class="w-c-ja" placeholder="単語(日)">
-		<input type="text" name="new_words[][ch]" class="w-c-ch" placeholder="単語(中)">
-	</li>
-	<li>
-		<input type="text" name="new_words[][ja]" class="w-c-ja" placeholder="単語(日)">
-		<input type="text" name="new_words[][ch]" class="w-c-ch" placeholder="単語(中)">
-	</li>
-	<li>
-		<input type="text" name="new_words[][ja]" class="w-c-ja" placeholder="単語(日)">
-		<input type="text" name="new_words[][ch]" class="w-c-ch" placeholder="単語(中)">
-	</li>
-	<li>
-		<input type="text" name="new_words[][ja]" class="w-c-ja" placeholder="単語(日)">
-		<input type="text" name="new_words[][ch]" class="w-c-ch" placeholder="単語(中)">
-	</li>
-	<li>
-		<input type="text" name="new_words[][ja]" class="w-c-ja" placeholder="単語(日)">
-		<input type="text" name="new_words[][ch]" class="w-c-ch" placeholder="単語(中)">
-	</li>
-	</ul>
+				<!-- 短文フォーム -->
+				<div class="margin-b-30">
+					<%= label_tag(:ja, "日本語") %><br>
+					<%= f.text_area :ja, placeholder: "日本語文を書く", class: "width-max", :required => true %>
+					<br>
+					<br>
+
+					<%= label_tag(:ch, "中国語") %><br>
+					<%= f.text_area :ch, placeholder: "中国語文を書く", class: "width-max", id: "sentence-ch", :required => true %>
+				</div>
 
 
-	<%= f.hidden_field :redirect_flg, value: @redirect_flg %>
-	<%= f.hidden_field :sentence_page, value: @sentence_page %>
+				<!-- 単語フォーム -->
+				<div class="clearfix">
+					<%= f.fields_for :words do |w| %>
+						<div id="word_ja_0" class="float-left">
+				        <%= render :partial => 'svg/google' %>
+				    </div>
+				      <%= w.text_field :ja ,placeholder: "単語（日）", class: "float-left" %>
+				    <div id="word_ch_0" class="float-left margin-l-10">
+				        <%= render :partial => 'svg/google' %>
+				    </div>
+						<%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
+					<% end %>
+				</div>
+				<div class="clearfix">
+					<div id="word_add_ja_0" class="float-left">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<input type="text" name="new_words[][ja]" class="float-left" placeholder="単語(日)" id="word_add_input_ja_0">
+					<div id="word_add_ch_0" class="float-left margin-l-10">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<input type="text" name="new_words[][ch]" class="float-left margin-l-10" placeholder="単語(中)" id="word_add_input_ch_0">
+				</div>
+				<div class="clearfix">
+					<div id="word_add_ja_1" class="float-left">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<input type="text" name="new_words[][ja]" class="float-left" placeholder="単語(日)" id="word_add_input_ja_1">
+					<div id="word_add_ch_1" class="float-left margin-l-10">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<input type="text" name="new_words[][ch]" class="float-left margin-l-10" placeholder="単語(中)" id="word_add_input_ch_1">
+				</div>
+				<div class="clearfix">
+					<div id="word_add_ja_2" class="float-left">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<input type="text" name="new_words[][ja]" class="float-left" placeholder="単語(日)" id="word_add_input_ja_2">
+					<div id="word_add_ch_2" class="float-left margin-l-10">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<input type="text" name="new_words[][ch]" class="float-left margin-l-10" placeholder="単語(中)" id="word_add_input_ch_2">
+				</div>
+				<div class="clearfix">
+					<div id="word_add_ja_3" class="float-left">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<input type="text" name="new_words[][ja]" class="float-left" placeholder="単語(日)" id="word_add_input_ja_3">
+					<div id="word_add_ch_3" class="float-left margin-l-10">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<input type="text" name="new_words[][ch]" class="float-left margin-l-10" placeholder="単語(中)" id="word_add_input_ch_3">
+				</div>
+				<div class="clearfix">
+					<div id="word_add_ja_4" class="float-left">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<input type="text" name="new_words[][ja]" class="float-left" placeholder="単語(日)" id="word_add_input_ja_4">
+					<div id="word_add_ch_4" class="float-left margin-l-10">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<input type="text" name="new_words[][ch]" class="float-left margin-l-10" placeholder="単語(中)" id="word_add_input_ch_4">
+				</div>
+				<div class="clearfix">
+					<div id="word_add_ja_5" class="float-left">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<input type="text" name="new_words[][ja]" class="float-left" placeholder="単語(日)" id="word_add_input_ja_5">
+					<div id="word_add_ch_5" class="float-left margin-l-10">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<input type="text" name="new_words[][ch]" class="float-left margin-l-10" placeholder="単語(中)" id="word_add_input_ch_5">
+				</div>
+				<div class="clearfix">
+					<div id="word_add_ja_6" class="float-left">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<input type="text" name="new_words[][ja]" class="float-left" placeholder="単語(日)" id="word_add_input_ja_6">
+					<div id="word_add_ch_6" class="float-left margin-l-10">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<input type="text" name="new_words[][ch]" class="float-left margin-l-10" placeholder="単語(中)" id="word_add_input_ch_6">
+				</div>
+				<div class="clearfix">
+					<div id="word_add_ja_7" class="float-left">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<input type="text" name="new_words[][ja]" class="float-left" placeholder="単語(日)" id="word_add_input_ja_7">
+					<div id="word_add_ch_7" class="float-left margin-l-10">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<input type="text" name="new_words[][ch]" class="float-left margin-l-10" placeholder="単語(中)" id="word_add_input_ch_7">
+				</div>
+				<div class="clearfix">
+					<div id="word_add_ja_8" class="float-left">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<input type="text" name="new_words[][ja]" class="float-left" placeholder="単語(日)" id="word_add_input_ja_8">
+					<div id="word_add_ch_8" class="float-left margin-l-10">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<input type="text" name="new_words[][ch]" class="float-left margin-l-10" placeholder="単語(中)" id="word_add_input_ch_8">
+				</div>
+				<div class="clearfix">
+					<div id="word_add_ja_9" class="float-left">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<input type="text" name="new_words[][ja]" class="float-left" placeholder="単語(日)" id="word_add_input_ja_9">
+					<div id="word_add_ch_9" class="float-left margin-l-10">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<input type="text" name="new_words[][ch]" class="float-left margin-l-10" placeholder="単語(中)" id="word_add_input_ch_9">
+				</div>
+				<div class="clearfix">
+					<div id="word_add_ja_10" class="float-left">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<input type="text" name="new_words[][ja]" class="float-left" placeholder="単語(日)" id="word_add_input_ja_10">
+					<div id="word_add_ch_10" class="float-left margin-l-10">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<input type="text" name="new_words[][ch]" class="float-left margin-l-10" placeholder="単語(中)" id="word_add_input_ch_10">
+				</div>
 
 
-	<%= f.submit "作成", class: "", id: "" %>
-<% end %>
+
+
+
+
+
+
+
+				<%= f.hidden_field :redirect_flg, value: @redirect_flg %>
+				<%= f.hidden_field :sentence_page, value: @sentence_page %>
+
+
+				<%= f.submit "作成", class: "margin-tb-50 prim-btn", id: "" %>
+			<% end %>
+		</div><!-- End of col-12 -->
+	</div><!-- End of row -->
+</div><!-- End of container -->
+
+
+<%= render :partial => 'footer/footer_not_selected' %>

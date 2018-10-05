@@ -399,14 +399,182 @@ $(document).ready(function() {
 
 
 
+//--------------- google 検索ボタン sentence_edit -------------------
+	$("#word_add_ja_0").click(function(){
+
+		var target = '#word_add_input_ja_0';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_add_ch_0").click(function(){
+
+		var target = '#word_add_input_ch_0';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_add_ja_1").click(function(){
+
+		var target = '#word_add_input_ja_1';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_add_ch_1").click(function(){
+
+		var target = '#word_add_input_ch_1';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_add_ja_2").click(function(){
+
+		var target = '#word_add_input_ja_2';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_add_ch_2").click(function(){
+
+		var target = '#word_add_input_ch_2';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_add_ja_3").click(function(){
+
+		var target = '#word_add_input_ja_3';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_add_ch_3").click(function(){
+
+		var target = '#word_add_input_ch_3';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_add_ja_4").click(function(){
+
+		var target = '#word_add_input_ja_4';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_add_ch_4").click(function(){
+
+		var target = '#word_add_input_ch_4';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_add_ja_5").click(function(){
+
+		var target = '#word_add_input_ja_5';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_add_ch_5").click(function(){
+
+		var target = '#word_add_input_ch_5';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_add_ja_6").click(function(){
+
+		var target = '#word_add_input_ja_6';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_add_ch_6").click(function(){
+
+		var target = '#word_add_input_ch_6';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_add_ja_7").click(function(){
+
+		var target = '#word_add_input_ja_7';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_add_ch_7").click(function(){
+
+		var target = '#word_add_input_ch_7';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_add_ja_8").click(function(){
+
+		var target = '#word_add_input_ja_8';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_add_ch_8").click(function(){
+
+		var target = '#word_add_input_ch_8';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_add_ja_9").click(function(){
+
+		var target = '#word_add_input_ja_9';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_add_ch_9").click(function(){
+
+		var target = '#word_add_input_ch_9';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_add_ja_10").click(function(){
+
+		var target = '#word_add_input_ja_10';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_add_ch_10").click(function(){
+
+		var target = '#word_add_input_ch_10';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
 
 
 
 
 
 
+//--------------- google 検索ボタン vocabulary_edit -------------------
+	$("#vocabulary_ja_1").click(function(){
 
+		var target = '#vocabulary_1_ja';
+				word = $(target).val();
 
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#vocabulary_ch_1").click(function(){
+
+		var target = '#vocabulary_1_ch';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
 
 
 
