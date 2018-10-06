@@ -42,7 +42,6 @@ class VocabulariesController < ApplicationController
 
 		#リダイレクト
 		ring = vocabulary.ring
-
 		if params[:vocabulary][:redirect_flg] == "vocabulary_ja"
 			redirect_to ring_vocabulary_ja_path(ring, page: params[:vocabulary][:vocabulary_page])
 		elsif params[:vocabulary][:redirect_flg] == "vocabulary_ch"
@@ -55,6 +54,20 @@ class VocabulariesController < ApplicationController
 	end
 
 	def destroy
+		vocabulary = Vocabulary.find(id_params)
+		vocabulary.update(deleted_at: Time.now)
+
+		#リダイレクト
+		ring = vocabulary.ring
+		if params[:redirect_flg] == "vocabulary_ja"
+			redirect_to ring_vocabulary_ja_path(ring, page: params[:vocabulary_page])
+		elsif params[:redirect_flg] == "vocabulary_ch"
+			redirect_to ring_vocabulary_ch_path(ring, page: params[:vocabulary_page])
+		elsif params[:redirect_flg] == "vocabulary_pin"
+			redirect_to ring_vocabulary_pin_path(ring, page: params[:vocabulary_page])
+		else
+			redirect_to vocabularies_path
+		end
 	end
 
 	def copy

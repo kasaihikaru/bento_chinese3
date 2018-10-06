@@ -1,9 +1,33 @@
-<%= form_for @vocabulary, method: :patch do |f| %>
-		<%= f.text_field :ja, placeholder: "日本語", class: "", :required => true %>
-		<%= f.text_field :ch, placeholder: "中国語", class: "", :required => true %><br>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8" >
 
-		<%= f.hidden_field :redirect_flg, value: @redirect_flg %>
-		<%= f.hidden_field :vocabulary_page, value: @vocabulary_page %>
+		<%= link_to "短文を削除", vocabulary_path(redirect_flg: @redirect_flg, vocabulary_page: @vocabulary_page), method: "DELETE", class: "second-btn hover-fifth float-right margin-t-15", data: { :confirm => '削除します。よろしいですか?'} %>
 
-    <%= f.submit "更新", class: "" %>
-<% end %>
+			<p class="font-18 bold margin-t-15">単語を編集する</p>
+
+
+			<!-- 単語フォーム -->
+			<%= form_for @vocabulary, method: :patch do |f| %>
+				<div class="clearfix">
+					<div id="vocabulary_edit_ja" class="float-left">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<%= f.text_field :ja, placeholder: "日本語", class: "float-left", :required => true %>
+					<div id="vocabulary_edit_ch" class="float-left margin-l-10">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<%= f.text_field :ch, placeholder: "中国語", class: "float-left", :required => true %>
+				</div>
+
+				<%= f.hidden_field :redirect_flg, value: @redirect_flg %>
+				<%= f.hidden_field :vocabulary_page, value: @vocabulary_page %>
+
+				<%= f.submit "更新", class: "margin-tb-50 prim-btn" %>
+			<% end %>
+		</div><!-- End of col-12 -->
+	</div><!-- End of row -->
+</div><!-- End of container -->
+
+
+<%= render :partial => 'footer/footer_not_selected' %>

@@ -20,7 +20,6 @@ class WordsController < ApplicationController
 
 		#リダイレクト
 		book = word.sentence.book
-
 		if params[:word][:redirect_flg] == "word_ja"
 			redirect_to book_word_ja_path(book)
 		elsif params[:word][:redirect_flg] == "word_ch"
@@ -33,6 +32,20 @@ class WordsController < ApplicationController
 	end
 
 	def destroy
+		word = Word.find(id_params)
+		word.update(deleted_at: Time.now)
+
+		#リダイレクト
+		book = word.sentence.book
+		if params[:redirect_flg] == "word_ja"
+			redirect_to book_word_ja_path(book)
+		elsif params[:redirect_flg] == "word_ch"
+			redirect_to book_word_ch_path(book)
+		elsif params[:redirect_flg] == "word_pin"
+			redirect_to book_word_pin_path(book)
+		else
+			redirect_to sentences_path
+		end
 	end
 
 	def copy

@@ -106,7 +106,7 @@
 					</thead>
 					<tbody class="">
 						<% @sentences.each do |sentence| %>
-							<% sentence.words.each do |word| %>
+							<% sentence.words.active.each do |word| %>
 								<tr id="word_row_<%= word.id %>">
 									<%= render :partial => 'books/word_row_ch', :locals=>{word: word} %>
 								</tr>

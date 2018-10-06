@@ -62,6 +62,10 @@ a, a:hover{  color: $key-col;}
 .thin-link{
   a, a:hover{  color: $second-col;}
 }
+.hover-fifth:hover{
+  color: $fifth-col;
+}
+
 
 //--------------- 配置 ----------------
 .float-right{  float: right;}

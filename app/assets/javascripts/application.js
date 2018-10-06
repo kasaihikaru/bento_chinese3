@@ -557,6 +557,22 @@ $(document).ready(function() {
 
 
 
+//--------------- google 検索ボタン word_edit -------------------
+	$("#word_edit_ja").click(function(){
+
+		var target = '#word_ja';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_edit_ch").click(function(){
+
+		var target = '#word_ch';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+
 
 
 
@@ -578,6 +594,22 @@ $(document).ready(function() {
 
 
 
+
+//--------------- google 検索ボタン vocabulary_new -------------------
+	$("#vocabulary_edit_ja").click(function(){
+
+		var target = '#vocabulary_ja';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#vocabulary_edit_ch").click(function(){
+
+		var target = '#vocabulary_ch';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
 
 
 

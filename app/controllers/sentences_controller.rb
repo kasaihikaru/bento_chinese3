@@ -78,6 +78,23 @@ class SentencesController < ApplicationController
 	end
 
 	def destroy
+		sentence = Sentence.find(id_params)
+		sentence.update(deleted_at: Time.now)
+		sentence.words.each do |word|
+			word.update(deleted_at: Time.now)
+		end
+
+		#リダイレクト
+		book = sentence.book
+		if params[:redirect_flg] == "sentence_ja"
+			redirect_to book_sentence_ja_path(book, page: params[:sentence_page])
+		elsif params[:redirect_flg] == "sentence_ch"
+			redirect_to book_sentence_ch_path(book, page: params[:sentence_page])
+		elsif params[:redirect_flg] == "sentence_pin"
+			redirect_to book_sentence_pin_path(book, page: params[:sentence_page])
+		else
+			redirect_to sentences_path
+		end
 	end
 
 	def copy
