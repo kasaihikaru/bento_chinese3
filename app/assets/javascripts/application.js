@@ -19,15 +19,16 @@
 //= require_tree .
 
 
+console.log("aaa");
 
 
 
+$(document).on('turbolinks:load',function() {
 
-$(document).ready(function() {
+	console.log("bbb");
 
-	///////////// 単語抜き出しボタン ////////////////
+//--------------- 単語抜き出し -------------------
 	$('#auto-words').on('click', function() {
-
 
 		var sentence = $('#sentence-ch').val();
 		console.log(sentence);
