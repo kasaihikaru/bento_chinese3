@@ -1,26 +1,37 @@
-<h2>Log in</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8" >
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <p class="font-18 bold margin-t-15">ログイン</p>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="margin-b-15">
+            <%= f.label :email, "メールアドレス" %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
+          <div class="margin-b-15">
+            <%= f.label :password, "パスワード" %><br />
+            <%= f.password_field :password, autocomplete: "current-password" %>
+          </div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+          <% if devise_mapping.rememberable? -%>
+            <div class="margin-b-15">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me, "ログイン情報を保持" %>
+            </div>
+          <% end -%>
 
-<%= render "users/shared/links" %>
+          <div class="actions">
+            <%= f.submit "ログイン", class: "margin-b-80 prim-btn" %>
+          </div>
+        <% end %>
+
+        <%= render "users/shared/links" %>
+
+
+    </div><!-- End of col-12 -->
+  </div><!-- End of row -->
+</div><!-- End of container -->
+
+<%= render :partial => 'footer/footer_not_selected' %>

@@ -1,36 +1,47 @@
-<div class="login">
-  <h2>ユーザー登録をして勉強を始めよう</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8" >
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
 
-    <div class="field">
-      <%= f.label :name, "名前" %><br />
-      <%= f.text_field :name, autofocus: true, maxlength: "8", placeholder: "BENTO" %>
-    </div>
+      <p class="font-18 bold margin-t-15">ユーザー登録をして勉強を始めよう</p>
 
-    <div class="field">
-      <%= f.label :email, "メールアドレス(非公開)" %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "bento@example.com" %>
-    </div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
 
-    <div class="field">
-      <%= f.label :password, "パスワード" %>
-      <% if @minimum_password_length %>
-      <%= @minimum_password_length %>文字以上
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
-    </div>
+        <div class="margin-b-15">
+          <%= f.label :name, "名前" %><br />
+          <%= f.text_field :name, autofocus: true, maxlength: "8", placeholder: "BENTO" %>
+        </div>
 
-    <div class="field">
-      <%= f.label :password_confirmation, "パスワード確認" %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
+        <div class="margin-b-15">
+          <span class="bold">メールアドレス</span><span class="font-12">(非公開)</span><br>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "bento@example.com" %>
+        </div>
 
-    <div class="actions">
-      <%= f.submit "ユーザー登録" %>
-    </div>
-  <% end %>
+        <div class="margin-b-15">
+          <%= f.label :password, "パスワード" %>
+          <% if @minimum_password_length %>
+          <%= @minimum_password_length %>文字以上
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
 
-  <%= render "users/shared/links" %>
-</div>
+        <div class="margin-b-15">
+          <%= f.label :password_confirmation, "パスワード確認" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "ユーザー登録", class: "margin-b-80 prim-btn" %>
+        </div>
+      <% end %>
+
+      <%= render "users/shared/links" %>
+
+
+
+    </div><!-- End of col-12 -->
+  </div><!-- End of row -->
+</div><!-- End of container -->
+
+<%= render :partial => 'footer/footer_not_selected' %>
