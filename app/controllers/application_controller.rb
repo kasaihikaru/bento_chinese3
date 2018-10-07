@@ -25,6 +25,77 @@ class ApplicationController < ActionController::Base
 	end
 
 
+
+	#-----------------------リダイレクト-----------------------
+	def redirect_with_sentence_flg_and_sentence_page(sentence)
+		book = sentence.book
+		if params[:redirect_flg] == "sentence_ja"
+			redirect_to book_sentence_ja_path(book, page: params[:sentence_page])
+		elsif params[:redirect_flg] == "sentence_ch"
+			redirect_to book_sentence_ch_path(book, page: params[:sentence_page])
+		elsif params[:redirect_flg] == "sentence_pin"
+			redirect_to book_sentence_pin_path(book, page: params[:sentence_page])
+		else
+			redirect_to sentences_path
+		end
+	end
+
+
+	def redirect_with_sentence_flg_and_sentence_page_get_by_sentence(sentence)
+		book = sentence.book
+		if params[:sentence][:redirect_flg] == "sentence_ja"
+			redirect_to book_sentence_ja_path(book, page: params[:sentence][:sentence_page])
+		elsif params[:sentence][:redirect_flg] == "sentence_ch"
+			redirect_to book_sentence_ch_path(book, page: params[:sentence][:sentence_page])
+		elsif params[:sentence][:redirect_flg] == "sentence_pin"
+			redirect_to book_sentence_pin_path(book, page: params[:sentence][:sentence_page])
+		else
+			redirect_to sentences_path
+		end
+	end
+
+
+	def redirect_with_word_flg(word)
+		book = word.sentence.book
+		if params[:redirect_flg] == "word_ja"
+			redirect_to book_word_ja_path(book)
+		elsif params[:redirect_flg] == "word_ch"
+			redirect_to book_word_ch_path(book)
+		elsif params[:redirect_flg] == "word_pin"
+			redirect_to book_word_pin_path(book)
+		else
+			redirect_to sentences_path
+		end
+	end
+
+
+	def redirect_with_vocabulary_flg_and_vocabulary_page(vocabulary)
+		ring = vocabulary.ring
+		if params[:redirect_flg] == "vocabulary_ja"
+			redirect_to ring_vocabulary_ja_path(ring, page: params[:vocabulary_page])
+		elsif params[:redirect_flg] == "vocabulary_ch"
+			redirect_to ring_vocabulary_ch_path(ring, page: params[:vocabulary_page])
+		elsif params[:redirect_flg] == "vocabulary_pin"
+			redirect_to ring_vocabulary_pin_path(ring, page: params[:vocabulary_page])
+		else
+			redirect_to vocabularies_path
+		end
+	end
+
+	def redirect_with_vocabulary_flg_and_vocabulary_page_get_by_vocabulary(vocabulary)
+		ring = vocabulary.ring
+		if params[:vocabulary][:redirect_flg] == "vocabulary_ja"
+			redirect_to ring_vocabulary_ja_path(ring, page: params[:vocabulary][:vocabulary_page])
+		elsif params[:vocabulary][:redirect_flg] == "vocabulary_ch"
+			redirect_to ring_vocabulary_ch_path(ring, page: params[:vocabulary][:vocabulary_page])
+		elsif params[:vocabulary][:redirect_flg] == "vocabulary_pin"
+			redirect_to ring_vocabulary_pin_path(ring, page: params[:vocabulary][:vocabulary_page])
+		else
+			redirect_to vocabularies_path
+		end
+	end
+
+
 	private
 	#-----------------------ユーザーvalidation系-----------------------
 	def login_check
@@ -123,6 +194,15 @@ class ApplicationController < ActionController::Base
 
 	def vocabulary_id_params
 		params[:vocabulary_id].to_i
+	end
+
+
+	def pin_params
+		params[:pin]
+	end
+
+	def words_params
+		params[:words]
 	end
 
 end

@@ -2,7 +2,13 @@
 	<div class="row">
 		<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8" >
 
-		<%= link_to "短文を削除", vocabulary_path(redirect_flg: @redirect_flg, vocabulary_page: @vocabulary_page), method: "DELETE", class: "second-btn hover-fifth float-right margin-t-15", data: { :confirm => '削除します。よろしいですか?'} %>
+			<div class="clearfix">
+				<%= link_to "短文を削除", vocabulary_path(redirect_flg: @redirect_flg, vocabulary_page: @vocabulary_page), method: "DELETE", class: "second-btn hover-fifth float-right margin-t-15", data: { :confirm => '削除します。よろしいですか?'} %>
+			</div>
+
+			<div class="clearfix">
+				<%= link_to "Pinyinを編集", vocabulary_edit_pin_path(@vocabulary, redirect_flg: @redirect_flg, vocabulary_page: @vocabulary_page), method: "GET", class: "second-btn hover-fifth float-right margin-t-15" %>
+			</div>
 
 			<p class="font-18 bold margin-t-15">単語を編集する</p>
 

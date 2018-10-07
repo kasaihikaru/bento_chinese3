@@ -1,0 +1,32 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8" >
+
+			<p class="font-18 bold margin-t-15">ピンインを編集する</p>
+
+
+			<%= form_tag vocabulary_update_pin_path(@vocabulary), method: "PUT" do %>
+
+				<!-- 単語フォーム -->
+				<div class="margin-b-30">
+					<div class="clearfix">
+						<div id="vocabulary_pinedit_ch_btn" class="float-left margin-lr-10">
+							<%= render :partial => 'svg/google' %>
+						</div>
+						<div class="float-left" id="vocabulary_pinedit_ch"><%= @vocabulary.ch %></div>
+						<%= text_field_tag :pin , @vocabulary.pin ,placeholder: "Pinyin", class: "float-left margin-l-10" %>
+					</div>
+				</div>
+
+				<%= hidden_field_tag :redirect_flg, @redirect_flg %>
+				<%= hidden_field_tag :vocabulary_page, @vocabulary_page %>
+
+
+				<%= submit_tag "更新", class: "margin-tb-50 prim-btn", id: "" %>
+			<% end %>
+		</div><!-- End of col-12 -->
+	</div><!-- End of row -->
+</div><!-- End of container -->
+
+
+<%= render :partial => 'footer/footer_not_selected' %>

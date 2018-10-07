@@ -8,6 +8,11 @@ class WordsController < ApplicationController
 	end
 
 	def edit_pin
+		@word = Word.find(word_id_params)
+		@i = 1
+
+		@redirect_flg = params[:redirect_flg]
+		@sentence_page = params[:sentence_page]
 	end
 
 	#-----------------------post, put-----------------------
@@ -31,21 +36,22 @@ class WordsController < ApplicationController
 		end
 	end
 
+	def update_pin
+		word = Word.find(word_id_params)
+		if word.pin != pin_params
+			word.update(pin: pin_params, pin_fixed: 1)
+		end
+
+		#リダイレクト
+		redirect_with_word_flg(word)
+	end
+
 	def destroy
 		word = Word.find(id_params)
 		word.update(deleted_at: Time.now)
 
 		#リダイレクト
-		book = word.sentence.book
-		if params[:redirect_flg] == "word_ja"
-			redirect_to book_word_ja_path(book)
-		elsif params[:redirect_flg] == "word_ch"
-			redirect_to book_word_ch_path(book)
-		elsif params[:redirect_flg] == "word_pin"
-			redirect_to book_word_pin_path(book)
-		else
-			redirect_to sentences_path
-		end
+		redirect_with_word_flg(word)
 	end
 
 	def copy
@@ -81,8 +87,6 @@ class WordsController < ApplicationController
 		@word.update(memorized_pin: 0)
 	end
 
-	def update_pin
-	end
 
 	private
 	#-----------------------ストロングパラメーター-----------------------

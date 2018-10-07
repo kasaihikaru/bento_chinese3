@@ -1,0 +1,44 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8" >
+
+			<p class="font-18 bold margin-t-15">ピンインを編集する</p>
+
+
+			<%= form_tag sentence_update_pin_path(@sentence), method: "PUT" do %>
+
+				<!-- 短文フォーム -->
+				<div class="margin-b-30">
+					<div class="font-18 margin-l-35">日本語：<%= @sentence.ja %></div>
+					<div id="sentence_pinedit_ch_btn" class="float-left margin-lr-10">
+						<%= render :partial => 'svg/google' %>
+					</div>
+					<div class="font-18" id="sentence_pinedit_ch">中国語：<%= @sentence.ch %></div>
+					<%= text_area_tag :pin, @sentence.pin,  placeholder: "ピンインを編集する", class: "width-max", :required => true %><br>
+				</div>
+
+
+				<!-- 単語フォーム -->
+				<% @sentence.words.active.each do |w| %>
+					<div class="clearfix">
+						<div id="word_pinedit_ch_<%= @i %>" class="float-left margin-lr-10">
+							<%= render :partial => 'svg/google' %>
+						</div>
+						<div class="float-left" id="sentence_words_pinedit_<%= @i %>_ch"><%= w.ch %></div>
+						<%= text_field_tag "words[" + w.id.to_s + "]", w.pin ,placeholder: "Pinyin", class: "float-left margin-l-10" %>
+					</div>
+					<% @i = @i +1 %>
+				<% end %>
+
+				<%= hidden_field_tag :redirect_flg, @redirect_flg %>
+				<%= hidden_field_tag :sentence_page, @sentence_page %>
+
+
+				<%= submit_tag "更新", class: "margin-tb-50 prim-btn", id: "" %>
+			<% end %>
+		</div><!-- End of col-12 -->
+	</div><!-- End of row -->
+</div><!-- End of container -->
+
+
+<%= render :partial => 'footer/footer_not_selected' %>

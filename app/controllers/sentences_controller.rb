@@ -16,13 +16,17 @@ class SentencesController < ApplicationController
 
 	def edit
 		@sentence = Sentence.find(id_params)
-		@sentence.words.build
 
 		@redirect_flg = params[:redirect_flg]
 		@sentence_page = params[:sentence_page]
 	end
 
 	def edit_pin
+		@sentence = Sentence.find(sentence_id_params)
+		@i = 1
+
+		@redirect_flg = params[:redirect_flg]
+		@sentence_page = params[:sentence_page]
 	end
 
 	#-----------------------post, put-----------------------
@@ -65,16 +69,23 @@ class SentencesController < ApplicationController
 
 
 		#リダイレクト
-		book = sentence.book
-		if params[:sentence][:redirect_flg] == "sentence_ja"
-			redirect_to book_sentence_ja_path(book, page: params[:sentence][:sentence_page])
-		elsif params[:sentence][:redirect_flg] == "sentence_ch"
-			redirect_to book_sentence_ch_path(book, page: params[:sentence][:sentence_page])
-		elsif params[:sentence][:redirect_flg] == "sentence_pin"
-			redirect_to book_sentence_pin_path(book, page: params[:sentence][:sentence_page])
-		else
-			redirect_to sentences_path
+		redirect_with_flg_and_sentence_page_get_by_sentence(sentence)
+	end
+
+	def update_pin
+		sentence = Sentence.find(sentence_id_params)
+		if sentence.pin != pin_params
+			sentence.update(pin: pin_params, pin_fixed: 1)
 		end
+		words_params.each do |key, value|
+			word = Word.find(key.to_i)
+			if word.pin != value
+				word.update(pin: value, pin_fixed: 1)
+			end
+		end
+
+		#リダイレクト
+		redirect_with_sentence_flg_and_sentence_page(sentence)
 	end
 
 	def destroy
@@ -85,16 +96,7 @@ class SentencesController < ApplicationController
 		end
 
 		#リダイレクト
-		book = sentence.book
-		if params[:redirect_flg] == "sentence_ja"
-			redirect_to book_sentence_ja_path(book, page: params[:sentence_page])
-		elsif params[:redirect_flg] == "sentence_ch"
-			redirect_to book_sentence_ch_path(book, page: params[:sentence_page])
-		elsif params[:redirect_flg] == "sentence_pin"
-			redirect_to book_sentence_pin_path(book, page: params[:sentence_page])
-		else
-			redirect_to sentences_path
-		end
+		redirect_with_sentence_flg_and_sentence_page(sentence)
 	end
 
 	def copy
@@ -120,8 +122,6 @@ class SentencesController < ApplicationController
 		@sentence.update( memorized_pin: 1 )
 	end
 
-	def update_pin
-	end
 
 	private
 	#-----------------------ストロングパラメーター-----------------------
@@ -138,8 +138,6 @@ class SentencesController < ApplicationController
 	def update_new_words_params
 		params.require(:new_words)
 	end
-
-
 
 
 	#-----------------------validation系-----------------------

@@ -19,6 +19,11 @@ class VocabulariesController < ApplicationController
 	end
 
 	def edit_pin
+		@vocabulary = Vocabulary.find(vocabulary_id_params)
+		@i = 1
+
+		@redirect_flg = params[:redirect_flg]
+		@vocabulary_page = params[:vocabulary_page]
 	end
 
 	#-----------------------post, put-----------------------
@@ -41,33 +46,26 @@ class VocabulariesController < ApplicationController
 		vocabulary.update("ja"=>update_params[:ja], "ch"=>update_params[:ch], "pin"=>update_params[:pin])
 
 		#リダイレクト
-		ring = vocabulary.ring
-		if params[:vocabulary][:redirect_flg] == "vocabulary_ja"
-			redirect_to ring_vocabulary_ja_path(ring, page: params[:vocabulary][:vocabulary_page])
-		elsif params[:vocabulary][:redirect_flg] == "vocabulary_ch"
-			redirect_to ring_vocabulary_ch_path(ring, page: params[:vocabulary][:vocabulary_page])
-		elsif params[:vocabulary][:redirect_flg] == "vocabulary_pin"
-			redirect_to ring_vocabulary_pin_path(ring, page: params[:vocabulary][:vocabulary_page])
-		else
-			redirect_to vocabularies_path
-		end
+		redirect_with_vocabulary_flg_and_vocabulary_page_get_by_vocabulary(vocabulary)
 	end
+
+
+	def update_pin
+		vocabulary = Vocabulary.find(vocabulary_id_params)
+		if vocabulary.pin != pin_params
+			vocabulary.update(pin: pin_params, pin_fixed: 1)
+		end
+		#リダイレクト
+		redirect_with_vocabulary_flg_and_vocabulary_page(vocabulary)
+	end
+
 
 	def destroy
 		vocabulary = Vocabulary.find(id_params)
 		vocabulary.update(deleted_at: Time.now)
 
 		#リダイレクト
-		ring = vocabulary.ring
-		if params[:redirect_flg] == "vocabulary_ja"
-			redirect_to ring_vocabulary_ja_path(ring, page: params[:vocabulary_page])
-		elsif params[:redirect_flg] == "vocabulary_ch"
-			redirect_to ring_vocabulary_ch_path(ring, page: params[:vocabulary_page])
-		elsif params[:redirect_flg] == "vocabulary_pin"
-			redirect_to ring_vocabulary_pin_path(ring, page: params[:vocabulary_page])
-		else
-			redirect_to vocabularies_path
-		end
+		redirect_with_vocabulary_flg_and_vocabulary_page(vocabulary)
 	end
 
 	def copy
@@ -123,8 +121,6 @@ class VocabulariesController < ApplicationController
 		@vocabulary_page = request.query_string.delete("page=").to_i
 	end
 
-	def update_pin
-	end
 
 
 	private

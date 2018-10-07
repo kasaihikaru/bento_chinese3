@@ -2,7 +2,12 @@
 	<div class="row">
 		<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8" >
 
-			<%= link_to "短文を削除", sentence_path(redirect_flg: @redirect_flg, sentence_page: @sentence_page), method: "DELETE", class: "second-btn hover-fifth float-right margin-t-15", data: { :confirm => '削除します。よろしいですか?'} %>
+			<div class="clearfix">
+				<%= link_to "短文を削除", sentence_path(redirect_flg: @redirect_flg, sentence_page: @sentence_page), method: "DELETE", class: "second-btn hover-fifth float-right margin-t-15", data: { :confirm => '削除します。よろしいですか?'} %>
+			</div>
+			<div class="clearfix">
+			<%= link_to "Pinyinを編集", sentence_edit_pin_path(@sentence, redirect_flg: @redirect_flg, sentence_page: @sentence_page), method: "GET", class: "second-btn hover-fifth float-right margin-t-15" %>
+			</div>
 
 
 			<p class="font-18 bold margin-t-15">短文を編集する</p>
@@ -12,19 +17,25 @@
 
 				<!-- 短文フォーム -->
 				<div class="margin-b-30">
+					<div id="sentence_edit_ja_btn" class="float-left margin-lr-10">
+						<%= render :partial => 'svg/google' %>
+					</div>
 					<%= label_tag(:ja, "日本語") %><br>
 					<%= f.text_area :ja, placeholder: "日本語文を書く", class: "width-max", :required => true %>
 					<br>
 					<br>
 
+					<div id="sentence_edit_ch_btn" class="float-left margin-lr-10">
+						<%= render :partial => 'svg/google' %>
+					</div>
 					<%= label_tag(:ch, "中国語") %><br>
 					<%= f.text_area :ch, placeholder: "中国語文を書く", class: "width-max", id: "sentence-ch", :required => true %>
 				</div>
 
 
 				<!-- 単語フォーム -->
-				<div class="clearfix">
-					<%= f.fields_for :words do |w| %>
+				<%= f.fields_for :words do |w| %>
+					<div class="clearfix">
 						<div id="word_ja_0" class="float-left">
 							<%= render :partial => 'svg/google' %>
 						</div>
@@ -33,8 +44,8 @@
 							<%= render :partial => 'svg/google' %>
 						</div>
 						<%= w.text_field :ch ,placeholder: "単語（中）", class: "float-left" %>
-					<% end %>
-				</div>
+					</div>
+				<% end %>
 				<div class="clearfix">
 					<div id="word_add_ja_0" class="float-left">
 						<%= render :partial => 'svg/google' %>
@@ -148,17 +159,12 @@
 
 
 
-
-
-
-
-
-
 				<%= f.hidden_field :redirect_flg, value: @redirect_flg %>
 				<%= f.hidden_field :sentence_page, value: @sentence_page %>
 
 
-				<%= f.submit "作成", class: "margin-tb-50 prim-btn", id: "" %>
+				<%= f.submit "更新", class: "margin-tb-50 prim-btn", id: "" %>
+
 			<% end %>
 		</div><!-- End of col-12 -->
 	</div><!-- End of row -->

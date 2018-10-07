@@ -172,7 +172,7 @@
 	</div>
 </div>
 
-<% if @current_book.user_id == current_user.id %>
+<% if user_signed_in? && @current_book.user_id == current_user.id %>
 	<%= render :partial => 'footer/footer_not_selected_with_book_id' %>
 <% else %>
 	<%= render :partial => 'footer/footer_not_selected' %>

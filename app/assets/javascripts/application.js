@@ -102,6 +102,26 @@ $(document).ready(function() {
 
 
 //--------------- google 検索ボタン sentence_new -------------------
+	// 短文
+	$("#sentence_new_ja_btn").click(function(){
+
+		var target = '#sentence_ja';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#sentence_new_ch_btn").click(function(){
+
+		var target = '#sentence-ch';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+
+
+
+
+	// 単語
 	$("#word_ja_0").click(function(){
 
 		var target = '#sentence_words_attributes_0_ja';
@@ -400,6 +420,24 @@ $(document).ready(function() {
 
 
 //--------------- google 検索ボタン sentence_edit -------------------
+	// 短文
+	$("#sentence_edit_ja_btn").click(function(){
+
+		var target = '#sentence_ja';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#sentence_edit_ch_btn").click(function(){
+
+		var target = '#sentence-ch';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+
+
+	// 単語
 	$("#word_add_ja_0").click(function(){
 
 		var target = '#word_add_input_ja_0';
@@ -613,6 +651,108 @@ $(document).ready(function() {
 
 
 
+//--------------- google 検索ボタン sentence_pinedit -------------------
+	// 短文
+	$("#sentence_pinedit_ch_btn").click(function(){
+
+		var target = '#sentence_pinedit_ch';
+				word = $(target).text();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+
+	// 単語
+	$("#word_pinedit_ch_1").click(function(){
+
+		var target = '#sentence_words_pinedit_1_ch';
+				word = $(target).text();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_pinedit_ch_2").click(function(){
+
+		var target = '#sentence_words_pinedit_2_ch';
+				word = $(target).text();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_pinedit_ch_3").click(function(){
+
+		var target = '#sentence_words_pinedit_3_ch';
+				word = $(target).text();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_pinedit_ch_4").click(function(){
+
+		var target = '#sentence_words_pinedit_4_ch';
+				word = $(target).text();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_pinedit_ch_5").click(function(){
+
+		var target = '#sentence_words_pinedit_5_ch';
+				word = $(target).text();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_pinedit_ch_6").click(function(){
+
+		var target = '#sentence_words_pinedit_6_ch';
+				word = $(target).text();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_pinedit_ch_7").click(function(){
+
+		var target = '#sentence_words_pinedit_7_ch';
+				word = $(target).text();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_pinedit_ch_8").click(function(){
+
+		var target = '#sentence_words_pinedit_8_ch';
+				word = $(target).text();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_pinedit_ch_9").click(function(){
+
+		var target = '#sentence_words_pinedit_9_ch';
+				word = $(target).text();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#word_pinedit_ch_10").click(function(){
+
+		var target = '#sentence_words_pinedit_10_ch';
+				word = $(target).text();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+
+
+
+//--------------- google 検索ボタン word_pinedit -------------------
+	$("#word_pinedit_ch").click(function(){
+
+		var target = '#sentence_word_pinedit_ch';
+				word = $(target).text();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+
+
+//--------------- google 検索ボタン vocabulary_pinedit -------------------
+	$("#vocabulary_pinedit_ch_btn").click(function(){
+
+		var target = '#vocabulary_pinedit_ch';
+				word = $(target).text();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
 
 
 
