@@ -62,14 +62,13 @@ class SentencesController < ApplicationController
 		# 新規word追加
 		update_new_words_params.each do |w|
 			if w[:ja].present? && w[:ch].present?
-				get_pinyin(w[:ch])
-				Word.create(ja: w[:ja], ch: w[:ch], sentence_id: original_sentence.id, pin: pinyin)
+				pinyin = get_pinyin(w[:ch])
+				Word.create(ja: w[:ja], ch: w[:ch], sentence_id: sentence.id, pin: pinyin)
 			end
 		end
 
-
 		#リダイレクト
-		redirect_with_flg_and_sentence_page_get_by_sentence(sentence)
+		redirect_with_sentence_flg_and_sentence_page_get_by_sentence(sentence)
 	end
 
 	def update_pin
@@ -77,10 +76,12 @@ class SentencesController < ApplicationController
 		if sentence.pin != pin_params
 			sentence.update(pin: pin_params, pin_fixed: 1)
 		end
-		words_params.each do |key, value|
-			word = Word.find(key.to_i)
-			if word.pin != value
-				word.update(pin: value, pin_fixed: 1)
+		if words_params.present?
+			words_params.each do |key, value|
+				word = Word.find(key.to_i)
+				if word.pin != value
+					word.update(pin: value, pin_fixed: 1)
+				end
 			end
 		end
 
