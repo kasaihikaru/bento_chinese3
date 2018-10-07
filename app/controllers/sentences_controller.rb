@@ -5,7 +5,7 @@ class SentencesController < ApplicationController
 
 	#-----------------------get-----------------------
 	def index
-		@sentences = Sentence.active.includes(book: :user).order("created_at DESC").page(params[:page]).per(20)
+		@sentences = Sentence.active.search_ja(serch_ja_params).search_ch(serach_ch_params).includes(book: :user).created_desc.page(page_params).per(20)
 	end
 
 	def new

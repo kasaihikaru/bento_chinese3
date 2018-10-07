@@ -614,7 +614,7 @@ $(document).on('turbolinks:load',function() {
 
 
 
-//--------------- google 検索ボタン vocabulary_edit -------------------
+//--------------- google 検索ボタン vocabulary_new -------------------
 	$("#vocabulary_ja_1").click(function(){
 
 		var target = '#vocabulary_1_ja';
@@ -629,11 +629,68 @@ $(document).on('turbolinks:load',function() {
 
 		window.open('http://www.google.com/search?q=中国語%20'+word);
 	});
+	$("#vocabulary_ja_2").click(function(){
+
+		var target = '#vocabulary_2_ja';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#vocabulary_ch_2").click(function(){
+
+		var target = '#vocabulary_2_ch';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#vocabulary_ja_3").click(function(){
+
+		var target = '#vocabulary_3_ja';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#vocabulary_ch_3").click(function(){
+
+		var target = '#vocabulary_3_ch';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+
+	$("#vocabulary_ja_4").click(function(){
+
+		var target = '#vocabulary_4_ja';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#vocabulary_ch_4").click(function(){
+
+		var target = '#vocabulary_4_ch';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#vocabulary_ja_5").click(function(){
+
+		var target = '#vocabulary_5_ja';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
+	$("#vocabulary_ch_5").click(function(){
+
+		var target = '#vocabulary_5_ch';
+				word = $(target).val();
+
+		window.open('http://www.google.com/search?q=中国語%20'+word);
+	});
 
 
 
 
-//--------------- google 検索ボタン vocabulary_new -------------------
+//--------------- google 検索ボタン vocabulary_edit -------------------
 	$("#vocabulary_edit_ja").click(function(){
 
 		var target = '#vocabulary_ja';

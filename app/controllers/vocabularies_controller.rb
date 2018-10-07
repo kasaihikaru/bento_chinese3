@@ -5,7 +5,7 @@ class VocabulariesController < ApplicationController
 
 	#-----------------------get-----------------------
 	def index
-		@vocabularies = Vocabulary.active.includes(ring: :user).order("created_at DESC").page(params[:page]).per(20)
+		@vocabularies = Vocabulary.active.search_ja(serch_ja_params).search_ch(serach_ch_params).includes(ring: :user).created_desc.page(page_params).per(20)
 	end
 
 	def new

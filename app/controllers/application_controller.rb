@@ -205,4 +205,15 @@ class ApplicationController < ActionController::Base
 		params[:words]
 	end
 
+	def serch_ja_params
+		params[:search_ja]
+	end
+
+	def serach_ch_params
+		params[:search_ch]
+	end
+
+	def page_params
+		params[:page]
+	end
 end

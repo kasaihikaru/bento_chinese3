@@ -7,10 +7,18 @@
 				<% end %>
 				<div class="btn-selected float-left">単</div>
 				<div class="float-right">
-					<form class="underline">
-						<input class="border-none" type="search" placeholder="単語を検索" style="width: 100px;">
-						<button class="svg-btn letter-bottom" type="submit"><%= render :partial => 'svg/search' %></button>
-					</form>
+					<%= form_tag(vocabularies_path, method: "GET", class: "underline") do %>
+						<%= text_field_tag :search_ja, "", placeholder: "日本語を検索", style: "width: 100px;", class: "border-none" %>
+						<%= button_tag( class: "svg-btn letter-bottom", name: nil) do %>
+						  <%= render :partial => 'svg/search' %>
+						<% end %>
+					<% end %>
+					<%= form_tag(vocabularies_path, method: "GET", class: "underline") do %>
+						<%= text_field_tag :search_ch, "", placeholder: "中国語を検索", style: "width: 100px;", class: "border-none" %>
+						<%= button_tag( class: "svg-btn letter-bottom", name: nil) do %>
+						  <%= render :partial => 'svg/search' %>
+						<% end %>
+					<% end %>
 				</div>
 			</div>
 			<div id="vocabularies-chank-home">
