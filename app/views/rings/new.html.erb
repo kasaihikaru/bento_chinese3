@@ -1,7 +1,25 @@
-<%= form_for @ring, method: :post do |f| %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8" >
 
-	<%= f.label :name, "単語帳の名前" %><br />
-	<%= f.text_field :name, placeholder: "", class: "", :required => true %>
+			<p class="font-18 margin-tb-15 bold">まずは、単語帳を作ってみましょう</p>
 
-	<%= f.submit "作成", class: "", id: "" %>
-<% end %>
+			<p>単語帳の中に、自分で作った単語や、他の人のものをコピーして入れることができます。</p>
+
+			<div class="margin-tb-30 center-align">
+				<%= render :partial => 'svg/new_ring_image' %>
+			</div>
+
+			<%= form_for @ring, method: :post do |f| %>
+				<div class="center-align">
+					<%= f.text_field :name, placeholder: "単語帳の名前", class: "input-text", :required => true %>
+
+					<%= f.submit "作成", class: "prim-btn" %>
+				</div>
+			<% end %>
+
+		</div><!-- End of col-12 -->
+	</div><!-- End of row -->
+</div><!-- End of container -->
+
+<%= render :partial => 'footer/footer_new_sentence_selected' %>

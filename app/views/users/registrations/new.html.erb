@@ -4,31 +4,25 @@
 
 
       <p class="font-18 bold margin-t-15">ユーザー登録をして勉強を始めよう</p>
+      <hr>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>
 
-        <div class="margin-b-15">
+        <div class="margin-b-30">
           <%= f.label :name, "名前" %><br />
-          <%= f.text_field :name, autofocus: true, maxlength: "8", placeholder: "BENTO" %>
+          <%= f.text_field :name, autofocus: true, maxlength: "8", placeholder: "BENTO", class: "input-text-width-100" %>
         </div>
 
-        <div class="margin-b-15">
-          <span class="bold">メールアドレス</span><span class="font-12">(非公開)</span><br>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "bento@example.com" %>
+        <div class="margin-b-30">
+          <span class="bold">メールアドレス</span><span class="font-12 margin-l-10">非公開</span><br>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "bento@example.com", class: "input-text-width-100" %>
         </div>
 
-        <div class="margin-b-15">
-          <%= f.label :password, "パスワード" %>
-          <% if @minimum_password_length %>
-          <%= @minimum_password_length %>文字以上
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password" %>
-        </div>
-
-        <div class="margin-b-15">
-          <%= f.label :password_confirmation, "パスワード確認" %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <div class="margin-b-30">
+          <span class="bold">パスワード</span><br>
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード(6文字以上)", class: "input-text-width-100" %><br>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード確認", class: "input-text-width-100" %>
         </div>
 
         <div class="actions">
