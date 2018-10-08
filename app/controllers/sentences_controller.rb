@@ -46,14 +46,22 @@ class SentencesController < ApplicationController
 
 	def update
 		sentence = Sentence.find(id_params)
-		sentence.update(ja:update_sentence_params[:ja], ch:update_sentence_params[:ch], pin:update_sentence_params[:pin] )
+		if sentence.pin_fixed == true
+			sentence.update(ja:update_sentence_params[:ja], ch:update_sentence_params[:ch] )
+		else
+			sentence.update(ja:update_sentence_params[:ja], ch:update_sentence_params[:ch], pin:update_sentence_params[:pin] )
+		end
 
 		# 付属の単語作成
 		words = words_attribute_params(Sentence.last.id)
 		words.each do |w|
 			if w[:id].present?
 				original_word = Word.find(w[:id])
-				original_word.update(ja: w[:ja], ch: w[:ch], pin: w[:pin])
+				if original_word.pin_fixed == true
+					original_word.update(ja: w[:ja], ch: w[:ch])
+				else
+					original_word.update(ja: w[:ja], ch: w[:ch], pin: w[:pin])
+				end
 			else
 				Word.create(ja: w[:ja], ch: w[:ch], pin: w[:pin], sentence_id: sentence.id)
 			end

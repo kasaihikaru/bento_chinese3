@@ -43,7 +43,11 @@ class VocabulariesController < ApplicationController
 
 	def update
 		vocabulary = Vocabulary.find(id_params)
-		vocabulary.update("ja"=>update_params[:ja], "ch"=>update_params[:ch], "pin"=>update_params[:pin])
+		if vocabulary.pin_fixed == true
+			vocabulary.update("ja"=>update_params[:ja], "ch"=>update_params[:ch])
+		else
+			vocabulary.update("ja"=>update_params[:ja], "ch"=>update_params[:ch], "pin"=>update_params[:pin])
+		end
 
 		#リダイレクト
 		redirect_with_vocabulary_flg_and_vocabulary_page_get_by_vocabulary(vocabulary)

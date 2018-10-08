@@ -21,7 +21,11 @@ class WordsController < ApplicationController
 
 	def update
 		word = Word.find(id_params)
-		word.update("ja"=>update_params[:ja], "ch"=>update_params[:ch], "pin"=>update_params[:pin])
+		if word.pin_fixed == true
+			word.update("ja"=>update_params[:ja], "ch"=>update_params[:ch])
+		else
+			word.update("ja"=>update_params[:ja], "ch"=>update_params[:ch], "pin"=>update_params[:pin])
+		end
 
 		#リダイレクト
 		book = word.sentence.book
