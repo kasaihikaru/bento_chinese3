@@ -4,7 +4,7 @@ class BooksController < ApplicationController
 	#-----------------------get-----------------------
 	def sentence_ja
 		@current_book = Book.find(book_id_params)
-		@sentences = @current_book.sentences.active.unmemorized_ja.active.includes(:words, book: :user).page(page_params).per(10)
+		@sentences = @current_book.sentences.active.active.includes(:words, book: :user).page(page_params).per(10)
 
 		#ページ遷移kaminariコントロール用クエリ
 		@sentence_page = request.query_string.delete("page=").to_i
@@ -12,7 +12,7 @@ class BooksController < ApplicationController
 
 	def sentence_ch
 		@current_book = Book.find(book_id_params)
-		@sentences = @current_book.sentences.active.unmemorized_ch.active.includes(:words, book: :user).page(page_params).per(10)
+		@sentences = @current_book.sentences.active.active.includes(:words, book: :user).page(page_params).per(10)
 
 		#ページ遷移kaminariコントロール用クエリ
 		@sentence_page = request.query_string.delete("page=").to_i
@@ -20,7 +20,7 @@ class BooksController < ApplicationController
 
 	def sentence_pin
 		@current_book = Book.find(book_id_params)
-		@sentences = @current_book.sentences.active.unmemorized_pin.active.includes(:words, book: :user).page(page_params).per(10)
+		@sentences = @current_book.sentences.active.active.includes(:words, book: :user).page(page_params).per(10)
 
 		#ページ遷移kaminariコントロール用クエリ
 		@sentence_page = request.query_string.delete("page=").to_i
