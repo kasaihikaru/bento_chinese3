@@ -114,11 +114,21 @@
 									<img class="icon" alt="no-icon" src="/images/no-icon.png">
 								<% end %>
 							<% end %>
-							<p class="left_balloon"><%= sentence.ja %></p>
+							<p class="left_balloon">
+								<%= sentence.ja %>
+								<a href="https://www.google.co.jp/search?q=<%= sentence.ja %>%20中国語" target="_blank">
+									<%= render :partial => 'svg/google_mini' %>
+								</a>
+							</p>
 						</div>
 
 						<!-- right-sentence -->
-						<p class="right_balloon"><%= sentence.ch %></p>
+						<p class="right_balloon">
+							<%= sentence.ch %>
+							<a href="https://www.google.co.jp/search?q=<%= sentence.ch %>%20中国語" target="_blank">
+								<%= render :partial => 'svg/google_mini' %>
+							</a>
+						</p>
 						<br class="clear_balloon"/>
 						<% if sentence.pin.present? %>
 							<p class="right_balloon"><%= sentence.pin %></p>

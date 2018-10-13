@@ -1,8 +1,16 @@
 <!-- ログインしてるが、自分じゃない -->
 <% if user_signed_in? && word.sentence.book.user_id != current_user.id %>
 	<th scope="col"><%= word.pin %></th>
-	<th scope="col"><%= word.ch %></th>
-	<th scope="col"><%= word.ja %></th>
+	<th scope="col">
+		<a href="https://www.google.co.jp/search?q=<%= word.ch %>%20中国語" target="_blank">
+			<%= word.ch %>
+		</a>
+	</th>
+	<th scope="col">
+		<a href="https://www.google.co.jp/search?q=<%= word.ja %>%20中国語" target="_blank">
+			<%= word.ja %>
+		</a>
+	</th>
 
 
 
@@ -20,8 +28,16 @@
 				<%= render :partial => 'svg/check_sm' %>
 			<% end %>
 		</th>
-		<th scope="col"><%= word.ch %></th>
-		<th scope="col"><%= word.ja %></th>
+		<th scope="col">
+			<a href="https://www.google.co.jp/search?q=<%= word.ch %>%20中国語" target="_blank">
+				<%= word.ch %>
+			</a>
+		</th>
+		<th scope="col">
+			<a href="https://www.google.co.jp/search?q=<%= word.ja %>%20中国語" target="_blank">
+				<%= word.ja %>
+			</a>
+		</th>
 	<% else %>
 		<th scope="col" class="bg-second">
 			<%= link_to edit_word_path(word) do %>
@@ -34,8 +50,16 @@
 				<%= render :partial => 'svg/check_sm' %>
 			<% end %>
 		</th>
-		<th scope="col" class="bg-second"><%= word.ch %></th>
-		<th scope="col" class="bg-second"><%= word.ja %></th>
+		<th scope="col" class="bg-second">
+			<a href="https://www.google.co.jp/search?q=<%= word.ch %>%20中国語" target="_blank">
+				<%= word.ch %>
+			</a>
+		</th>
+		<th scope="col" class="bg-second">
+			<a href="https://www.google.co.jp/search?q=<%= word.ja %>%20中国語" target="_blank">
+				<%= word.ja %>
+			</a>
+		</th>
 	<% end %>
 
 
@@ -45,6 +69,14 @@
 <!-- ログインしていない -->
 <% else %>
 	<th scope="col"><%= word.pin %></th>
-	<th scope="col"><%= word.ch %></th>
-	<th scope="col"><%= word.ja %></th>
+	<th scope="col">
+		<a href="https://www.google.co.jp/search?q=<%= word.ch %>%20中国語" target="_blank">
+			<%= word.ch %>
+		</a>
+	</th>
+	<th scope="col">
+		<a href="https://www.google.co.jp/search?q=<%= word.ja %>%20中国語" target="_blank">
+			<%= word.ja %>
+		</a>
+	</th>
 <% end %>

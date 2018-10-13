@@ -1,7 +1,15 @@
 <!-- ログインしてるが、自分じゃない -->
 <% if user_signed_in? && word.sentence.book.user_id != current_user.id %>
-	<th scope="col"><%= word.ch %></th>
-	<th scope="col"><%= word.ja %></th>
+	<th scope="col">
+		<a href="https://www.google.co.jp/search?q=<%= word.ch %>%20中国語" target="_blank">
+			<%= word.ch %>
+		</a>
+	</th>
+	<th scope="col">
+		<a href="https://www.google.co.jp/search?q=<%= word.ja %>%20中国語" target="_blank">
+			<%= word.ja %>
+		</a>
+	</th>
 	<th scope="col"><%= word.pin %></th>
 
 
@@ -14,13 +22,21 @@
 				<%= render :partial => 'svg/edit_sm' %>
 			<% end %>
 		</th>
-		<th scope="col"><%= word.ch %></th>
+		<th scope="col">
+			<a href="https://www.google.co.jp/search?q=<%= word.ch %>%20中国語" target="_blank">
+				<%= word.ch %>
+			</a>
+		</th>
 		<th scope="col">
 			<%= link_to word_check_ch_path(word), class: "", method: :put, remote: true do %>
 				<%= render :partial => 'svg/check_sm' %>
 			<% end %>
 		</th>
-		<th scope="col"><%= word.ja %></th>
+		<th scope="col">
+			<a href="https://www.google.co.jp/search?q=<%= word.ja %>%20中国語" target="_blank">
+				<%= word.ja %>
+			</a>
+		</th>
 		<th scope="col"><%= word.pin %></th>
 	<% else %>
 		<th scope="col" class="bg-second">
@@ -28,13 +44,21 @@
 				<%= render :partial => 'svg/edit_sm' %>
 			<% end %>
 		</th>
-		<th scope="col" class="bg-second"><%= word.ch %></th>
+		<th scope="col" class="bg-second">
+			<a href="https://www.google.co.jp/search?q=<%= word.ch %>%20中国語" target="_blank">
+				<%= word.ch %>
+			</a>
+		</th>
 		<th scope="col" class="bg-second">
 			<%= link_to word_uncheck_ch_path(word), class: "", method: :put, remote: true do %>
 				<%= render :partial => 'svg/check_sm' %>
 			<% end %>
 		</th>
-		<th scope="col" class="bg-second"><%= word.ja %></th>
+		<th scope="col" class="bg-second">
+			<a href="https://www.google.co.jp/search?q=<%= word.ja %>%20中国語" target="_blank">
+				<%= word.ja %>
+			</a>
+		</th>
 		<th scope="col" class="bg-second"><%= word.pin %></th>
 	<% end %>
 
@@ -44,7 +68,15 @@
 
 <!-- ログインしていない -->
 <% else %>
-	<th scope="col"><%= word.ch %></th>
-	<th scope="col"><%= word.ja %></th>
+	<th scope="col">
+		<a href="https://www.google.co.jp/search?q=<%= word.ch %>%20中国語" target="_blank">
+			<%= word.ch %>
+		</a>
+	</th>
+	<th scope="col">
+		<a href="https://www.google.co.jp/search?q=<%= word.ja %>%20中国語" target="_blank">
+			<%= word.ja %>
+		</a>
+	</th>
 	<th scope="col"><%= word.pin %></th>
 <% end %>

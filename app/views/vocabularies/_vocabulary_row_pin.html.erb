@@ -34,8 +34,16 @@
 		</div><!-- End of 短文コピー -->
 	</th>
 	<th scope="col"><%= vocabulary.pin %></th>
-	<th scope="col"><%= vocabulary.ch %></th>
-	<th scope="col"><%= vocabulary.ja %></th>
+	<th scope="col">
+		<a href="https://www.google.co.jp/search?q=<%= vocabulary.ch %>%20中国語" target="_blank">
+			<%= vocabulary.ch %>
+		</a>
+	</th>
+	<th scope="col">
+		<a href="https://www.google.co.jp/search?q=<%= vocabulary.ja %>%20中国語" target="_blank">
+			<%= vocabulary.ja %>
+		</a>
+	</th>
 
 
 
@@ -53,8 +61,16 @@
 				<%= render :partial => 'svg/check_sm' %>
 			<% end %>
 		</th>
-		<th scope="col"><%= vocabulary.ch %></th>
-		<th scope="col"><%= vocabulary.ja %></th>
+		<th scope="col">
+			<a href="https://www.google.co.jp/search?q=<%= vocabulary.ch %>%20中国語" target="_blank">
+				<%= vocabulary.ch %>
+			</a>
+		</th>
+		<th scope="col">
+			<a href="https://www.google.co.jp/search?q=<%= vocabulary.ja %>%20中国語" target="_blank">
+				<%= vocabulary.ja %>
+			</a>
+		</th>
 	<% else %>
 		<th scope="col" class="bg-second">
 			<%= link_to edit_vocabulary_path(vocabulary) do %>
@@ -67,8 +83,16 @@
 				<%= render :partial => 'svg/check_sm' %>
 			<% end %>
 		</th>
-		<th scope="col" class="bg-second"><%= vocabulary.ch %></th>
-		<th scope="col" class="bg-second"><%= vocabulary.ja %></th>
+		<th scope="col" class="bg-second">
+			<a href="https://www.google.co.jp/search?q=<%= vocabulary.ch %>%20中国語" target="_blank">
+				<%= vocabulary.ch %>
+			</a>
+		</th>
+		<th scope="col" class="bg-second">
+			<a href="https://www.google.co.jp/search?q=<%= vocabulary.ja %>%20中国語" target="_blank">
+				<%= vocabulary.ja %>
+			</a>
+		</th>
 	<% end %>
 
 
@@ -78,6 +102,14 @@
 <!-- ログインしていない -->
 <% else %>
 	<th scope="col"><%= vocabulary.pin %></th>
-	<th scope="col"><%= vocabulary.ch %></th>
-	<th scope="col"><%= vocabulary.ja %></th>
+	<th scope="col">
+		<a href="https://www.google.co.jp/search?q=<%= vocabulary.ch %>%20中国語" target="_blank">
+			<%= vocabulary.ch %>
+		</a>
+	</th>
+	<th scope="col">
+		<a href="https://www.google.co.jp/search?q=<%= vocabulary.ja %>%20中国語" target="_blank">
+			<%= vocabulary.ja %>
+		</a>
+	</th>
 <% end %>
