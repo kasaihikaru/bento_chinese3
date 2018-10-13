@@ -35,7 +35,12 @@ class RingsController < ApplicationController
 	#-----------------------post, put-----------------------
 	def create
 		Ring.create(create_params)
-		redirect_to user_path(current_user)
+
+		if params[:ring][:redirect_flg] == "first_ring"
+			redirect_to new_sentence_path
+		else
+			redirect_to user_path(current_user)
+		end
 	end
 
 	def update

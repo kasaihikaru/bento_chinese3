@@ -52,7 +52,11 @@ class BooksController < ApplicationController
 	#-----------------------post, put-----------------------
 	def create
 		Book.create(create_params)
-		redirect_to user_path(current_user)
+		if params[:book][:redirect_flg] == "first_book"
+			redirect_to new_sentence_path
+		else
+			redirect_to user_path(current_user)
+		end
 	end
 
 	def update

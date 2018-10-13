@@ -13,6 +13,7 @@
 			<%= form_for @ring, method: :post do |f| %>
 				<div class="center-align">
 					<%= f.text_field :name, placeholder: "単語帳の名前", class: "input-text", :required => true %>
+					<%= f.hidden_field :redirect_flg, value: "first_ring" %>
 
 					<%= f.submit "作成", class: "prim-btn" %>
 				</div>

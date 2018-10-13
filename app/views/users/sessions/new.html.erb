@@ -5,6 +5,8 @@
       <p class="font-18 bold margin-t-15">ログイン</p>
       <hr>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= devise_error_messages %>
+
         <div class="margin-b-30">
           <%= f.label :email, "メールアドレス" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input-text-width-100" %>

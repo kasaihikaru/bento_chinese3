@@ -13,6 +13,7 @@
 			<%= form_for @book, method: :post, class: "" do |f| %>
 				<div class="center-align">
 					<%= f.text_field :name, placeholder: "短文帳の名前", class: "input-text", :required => true %>
+					<%= f.hidden_field :redirect_flg, value: "first_book" %>
 
 					<%= f.submit "作成", class: "prim-btn" %>
 				</div>

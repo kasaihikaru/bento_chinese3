@@ -76,3 +76,4 @@ gem 'dotenv-rails' #環境変数の管理用
 gem 'ruby-pinyin' #ピンインを入れる
 gem 'kaminari' #ページネーション
 gem 'google-analytics-rails' #forGA
+gem 'rails-i18n' #多言語
