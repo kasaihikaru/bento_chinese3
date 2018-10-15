@@ -3,13 +3,13 @@
     <div class="col-md-2 d-none d-md-block topline"></div>
     <div class="col-xs-3 col-md-2 center-align topline padding-tb-10">
       <%= link_to root_path do %>
-        <%= render :partial => 'svg/home_colored' %>
+        <%= render :partial => 'svg/home' %>
       <% end %>
     </div>
     <% if user_signed_in? %>
       <div class="col-xs-3 col-md-2 center-align bold-topline padding-tb-10">
         <%= link_to new_sentence_path do %>
-          <%= render :partial => 'svg/+bun' %>
+          <%= render :partial => 'svg/+bun_colored' %>
         <% end %>
       </div>
       <div class="col-xs-3 col-md-2 center-align topline padding-tb-10">
