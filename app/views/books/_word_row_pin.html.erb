@@ -46,7 +46,7 @@
 		</th>
 		<th scope="col" class="bg-second"><%= word.pin %></th>
 		<th scope="col" class="bg-second">
-			<%= link_to word_uncheck_ja_path(word), class: "", method: :put, remote: true do %>
+			<%= link_to word_uncheck_pin_path(word), class: "", method: :put, remote: true do %>
 				<%= render :partial => 'svg/check_sm' %>
 			<% end %>
 		</th>
