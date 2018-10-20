@@ -33,6 +33,7 @@ $fifth-col : #FFFFFF;
 
 $key-col: #336699;
 $key-col2: #3333CC;
+$alert-col: #FF8000;
 
 //--------------- 背景色 ----------------
 .bg-first{  background-color: $first-col;}
@@ -209,30 +210,53 @@ a, a:hover{  color: $key-col;}
 
 
 
-// バッジ
-.prime-badge{
-  color: $forth-col;
-  background-color: $fifth-col;
-  border: #CCCCCC 1px solid;
-  border-bottom: $first-col 1px solid;
+//--------------- badge ----------------
+// databadge top right
+span[data-badge-top-right]{
+  display: block;
+  position: relative;
 }
-.subprime-badge{
-  color: $forth-col;
-  background-color: $fifth-col;
-  border: #CCCCCC 1px solid;
-  border-bottom: $second-col 1px solid;
+span[data-badge-top-right]:before {
+  position: absolute;
+  display: inline-block;
+  font-weight: bold;
+  background-color: $alert-col;
+  border-radius: 50%;
+  font-size: 12px;
+  min-width: 20px;
+  line-height: 1;
+  padding: 4px;
+  color: $fifth-col;
 }
-.black-badge{
-  color: $forth-col;
-  background-color: $fifth-col;
-  border: #CCCCCC 1px solid;
-  border-bottom: $forth-col 1px solid;
+
+span[data-badge-top-right]:before {
+  top: 0;
+  right: 0;
+  transform: translate(75%, -50%);
+  content: attr(data-badge-top-right)"";
 }
-.white-badge{
-  color: $forth-col;
-  background-color: $fifth-col;
-  border: #CCCCCC 1px solid;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // underline
@@ -298,7 +322,7 @@ pre {
 .notice, .alert{
   text-align: center;
   background-color: #FF8000;
-  color: $fifth-col;
+  color: $alert-col;
   margin:0;
 }
 

@@ -36,7 +36,11 @@
 									<% end %>
 								<% end %>
 							</div>
-							<div class="float-left font-15 margin-5"><%= vocabulary.ring.name %></div>
+							<div class="float-left font-15 margin-5">
+								<%= link_to ring_vocabulary_ja_path(vocabulary.ring) do %>
+									<%= render :partial => 'svg/ring_mini' %><%= vocabulary.ring.name %>
+								<% end %>
+							</div>
 
 							<!-- コピーボタン or 編集ボタン-->
 							<div class="float-right font-12 thin-link">

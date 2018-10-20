@@ -44,6 +44,7 @@
           <div class="col-xs-6" >
             <a href="/books/<%= book.id %>/sentence_ja">
               <%= book.name %>
+              <span class="font-12 cl-second">(<%= book.sentences.count %>)</span>
             </a>
           </div>
         <% end %>
@@ -64,6 +65,7 @@
           <div class="col-xs-6" >
             <a href="/rings/<%= ring.id %>/vocabulary_ja">
               <%= ring.name %>
+              <span class="font-12 cl-second">(<%= ring.vocabularies.count %>)</span>
             </a>
           </div>
         <% end %>

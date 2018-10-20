@@ -34,24 +34,46 @@
 	<% end %>
 </div>
 
+
+
+
+<!-- 6パターン選択部分 -->
 <div class="container margin-b-15">
 	<div class="row center-align">
 		<div class="col-xs-2 padding-2 center-align font-15 margin-t-5">
 			文
 		</div>
-		<%= link_to book_sentence_ja_path(@current_book) do %>
+		<%= link_to book_sentence_ja_path(@current_book, page: @sentence_page) do %>
 			<div class="col-xs-3 padding-2">
-				<div class="btn-unselected">日</div>
+				<div class="btn-unselected">
+					<% if user_signed_in? && @current_book.user_id == current_user.id && @count_sentence_ja_unmemorized > 0 %>
+						<span data-badge-top-right="<%= @count_sentence_ja_unmemorized %>">日</span>
+					<% else %>
+						日
+					<% end %>
+				</div>
 			</div>
 		<% end %>
-		<%= link_to book_sentence_ch_path(@current_book) do %>
+		<%= link_to book_sentence_ch_path(@current_book, page: @sentence_page) do %>
 			<div class="col-xs-3 padding-2">
-				<div class="btn-unselected">中</div>
+				<div class="btn-unselected">
+					<% if user_signed_in? && @current_book.user_id == current_user.id && @count_sentence_ch_unmemorized > 0 %>
+						<span data-badge-top-right="<%= @count_sentence_ch_unmemorized %>">中</span>
+					<% else %>
+						中
+					<% end %>
+				</div>
 			</div>
 		<% end %>
-		<%= link_to book_sentence_pin_path(@current_book) do %>
+		<%= link_to book_sentence_pin_path(@current_book, page: @sentence_page) do %>
 			<div class="col-xs-3 padding-2">
-				<div class="btn-unselected">pin</div>
+				<div class="btn-unselected">
+					<% if user_signed_in? && @current_book.user_id == current_user.id && @count_sentence_pin_unmemorized > 0 %>
+						<span data-badge-top-right="<%= @count_sentence_pin_unmemorized %>">pin</span>
+					<% else %>
+						pin
+					<% end %>
+				</div>
 			</div>
 		<% end %>
 	</div>
@@ -61,21 +83,42 @@
 		</div>
 		<%= link_to book_word_ja_path(@current_book) do %>
 			<div class="col-xs-3 padding-2">
-				<div class="btn-unselected">日</div>
+				<div class="btn-unselected">
+					<% if user_signed_in? && @current_book.user_id == current_user.id && @count_word_ja_unmemorized > 0 %>
+						<span data-badge-top-right="<%= @count_word_ja_unmemorized %>">日</span>
+					<% else %>
+						日
+					<% end %>
+				</div>
 			</div>
 		<% end %>
 		<%= link_to book_word_ch_path(@current_book) do %>
 			<div class="col-xs-3 padding-2">
-				<div class="btn-selected">中</div>
+				<div class="btn-selected">
+					<% if user_signed_in? && @current_book.user_id == current_user.id && @count_word_ch_unmemorized > 0 %>
+						<span data-badge-top-right="<%= @count_word_ch_unmemorized %>">中</span>
+					<% else %>
+						中
+					<% end %>
+				</div>
 			</div>
 		<% end %>
 		<%= link_to book_word_pin_path(@current_book) do %>
 			<div class="col-xs-3 padding-2">
-				<div class="btn-unselected">pin</div>
+				<div class="btn-unselected">
+					<% if user_signed_in? && @current_book.user_id == current_user.id && @count_word_pin_unmemorized > 0 %>
+						<span data-badge-top-right="<%= @count_word_pin_unmemorized %>">pin</span>
+					<% else %>
+						pin
+					<% end %>
+				</div>
 			</div>
 		<% end %>
 	</div>
 </div>
+
+
+
 
 <div class="container margin-b-15 center-align">
 	<% if user_signed_in? && @current_book.user_id == current_user.id %>

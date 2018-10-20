@@ -1,44 +1,73 @@
 class BooksController < ApplicationController
 	before_action :login_check, only: [:create, :copy]
 
+
+	#-----------------------common-----------------------
+	def get_counts
+		@count_sentence_ja_unmemorized = @current_book.sentences.active.unmemorized_ja.count
+		@count_sentence_ch_unmemorized = @current_book.sentences.active.unmemorized_ch.count
+		@count_sentence_pin_unmemorized = @current_book.sentences.active.unmemorized_pin.count
+		@count_word_ja_unmemorized = 0
+		@count_word_ch_unmemorized = 0
+		@count_word_pin_unmemorized = 0
+		@current_book.sentences.each do |sentence|
+			@count_word_ja_unmemorized += sentence.words.active.unmemorized_ja.count
+			@count_word_ch_unmemorized += sentence.words.active.unmemorized_ch.count
+			@count_word_pin_unmemorized += sentence.words.active.unmemorized_pin.count
+		end
+	end
+
+	def get_book_sentences_pagenate
+		@current_book = Book.find(book_id_params)
+		@sentences = @current_book.sentences.active.includes(:words, book: :user).page(page_params).per(10)
+	end
+
+	def get_book_sentences
+		@current_book = Book.find(book_id_params)
+		@sentences = @current_book.sentences.active.includes(:words, book: :user)
+	end
+
+	#ページ遷移kaminariコントロール用クエリ
+	def control_kaminari
+		@sentence_page = request.query_string.delete("page=").to_i
+	end
+
+
 	#-----------------------get-----------------------
 	def sentence_ja
-		@current_book = Book.find(book_id_params)
-		@sentences = @current_book.sentences.active.active.includes(:words, book: :user).page(page_params).per(10)
+		get_book_sentences_pagenate
+		get_counts
 
-		#ページ遷移kaminariコントロール用クエリ
-		@sentence_page = request.query_string.delete("page=").to_i
+		control_kaminari
 	end
 
 	def sentence_ch
-		@current_book = Book.find(book_id_params)
-		@sentences = @current_book.sentences.active.active.includes(:words, book: :user).page(page_params).per(10)
+		get_book_sentences_pagenate
+		get_counts
 
-		#ページ遷移kaminariコントロール用クエリ
-		@sentence_page = request.query_string.delete("page=").to_i
+		control_kaminari
 	end
 
 	def sentence_pin
-		@current_book = Book.find(book_id_params)
-		@sentences = @current_book.sentences.active.active.includes(:words, book: :user).page(page_params).per(10)
+		get_book_sentences_pagenate
+		get_counts
 
-		#ページ遷移kaminariコントロール用クエリ
-		@sentence_page = request.query_string.delete("page=").to_i
+		control_kaminari
 	end
 
 	def word_ja
-		@current_book = Book.find(book_id_params)
-		@sentences = @current_book.sentences.active.includes(:words, book: :user)
+		get_book_sentences
+		get_counts
 	end
 
 	def word_ch
-		@current_book = Book.find(book_id_params)
-		@sentences = @current_book.sentences.active.includes(:words, book: :user)
+		get_book_sentences
+		get_counts
 	end
 
 	def word_pin
-		@current_book = Book.find(book_id_params)
-		@sentences = @current_book.sentences.active.includes(:words, book: :user)
+		get_book_sentences
+		get_counts
 	end
 
 	def new

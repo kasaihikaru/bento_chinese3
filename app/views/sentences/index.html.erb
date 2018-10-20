@@ -131,7 +131,7 @@
 					</div>
 					<div class="center-align thin-link">
 						<%= link_to book_sentence_ja_path(sentence.book) do %>
-							<%= sentence.book.name %>
+							<%= render :partial => 'svg/book_mini' %><%= sentence.book.name %>
 						<% end %>
 						<hr>
 					</div>
