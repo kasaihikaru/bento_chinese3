@@ -110,7 +110,7 @@ a, a:hover{  color: $key-col;}
 //--------------- 大きさ ----------------
 .width-max{ width: 100%;}
 .width-80per{ width: 80%;}
-
+.with-100{ width: 100px; }
 
 //--------------- ボタン ----------------
 .btn-selected{
@@ -325,6 +325,14 @@ pre {
   color: $alert-col;
   margin:0;
 }
+.modal-dialog-bottom{
+  position: absolute;
+  bottom: 0;
+  width: 90%;
+  margin-left: 5%;
+  text-align: center;
+}
+
 
 
 //----------------- pagenatiom ------------------//

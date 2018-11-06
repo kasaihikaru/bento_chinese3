@@ -1,23 +1,18 @@
 <footer class="container-fluid">
   <div class="row">
-    <div class="col-md-2 d-none d-md-block topline"></div>
-    <div class="col-xs-3 col-md-2 center-align bold-topline padding-tb-10">
+    <div class="col-md-3 d-none d-md-block topline"></div>
+    <div class="col-xs-4 col-md-2 center-align bold-topline padding-tb-10">
       <%= link_to root_path do %>
         <%= render :partial => 'svg/home_colored' %>
       <% end %>
     </div>
     <% if user_signed_in? %>
-      <div class="col-xs-3 col-md-2 center-align topline padding-tb-10">
-        <%= link_to new_sentence_path do %>
-          <%= render :partial => 'svg/+bun' %>
-        <% end %>
+      <div class="col-xs-4 col-md-2 center-align topline padding-tb-10">
+        <div type="button" class="" data-toggle="modal" data-target="#to-new">
+          <%= render :partial => 'svg/plus' %>
+        </div>
       </div>
-      <div class="col-xs-3 col-md-2 center-align topline padding-tb-10">
-        <%= link_to new_vocabulary_path do %>
-          <%= render :partial => 'svg/+tan' %>
-        <% end %>
-      </div>
-      <div class="col-xs-3 col-md-2 center-align topline padding-tb-10">
+      <div class="col-xs-4 col-md-2 center-align topline padding-tb-10">
         <%= link_to user_path(current_user) do %>
           <%= render :partial => 'svg/user_page' %>
         <% end %>
@@ -29,6 +24,30 @@
         <% end %>
       </div>
     <% end %>
-    <div class="col-md-2 d-none d-md-block topline"></div>
+    <div class="col-md-3 d-none d-md-block topline"></div>
   </div>
 </footer>
+
+
+<!-- モーダル -->
+<div class="modal fade" id="to-new" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-bottom" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="font-18 bold">
+          どちらを作成しますか？
+          <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">×</button>
+        </p>
+      </div>
+      <div class="modal-body">
+        <%= link_to new_sentence_path do %>
+          <%= render :partial => 'svg/+bun' %>
+        <% end %>
+        &emsp;&emsp;&emsp;&emsp;
+        <%= link_to new_vocabulary_path do %>
+          <%= render :partial => 'svg/+tan' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
