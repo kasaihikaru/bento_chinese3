@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
 		elsif params[:redirect_flg] == "sentence_pin"
 			redirect_to book_sentence_pin_path(book, page: params[:sentence_page])
 		else
-			redirect_to sentences_path
+			redirect_to book_sentence_list_ch_path(book)
 		end
 	end
 
@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
 		elsif params[:sentence][:redirect_flg] == "sentence_pin"
 			redirect_to book_sentence_pin_path(book, page: params[:sentence][:sentence_page])
 		else
-			redirect_to sentences_path
+			redirect_to book_sentence_list_ch_path(book)
 		end
 	end
 
