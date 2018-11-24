@@ -123,10 +123,10 @@
 	<div class="row">
 		<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8" >
 				<% @sentences.each do |sentence| %>
-					<div class="left-align" type="button" data-toggle="collapse" data-target="#hidden-ja-<%= sentence.id %>" aria-expanded="false">
+					<a class="left-align cl-first" type="button" data-toggle="collapse" data-target="#hidden-ja-<%= sentence.id %>" aria-expanded="false">
 						<div class="font-12"><%= sentence.pin %></div>
 						<div class="font-18"><%= sentence.ch %></div>
-					</div>
+					</a>
 					<div class="collapse font-12" id="hidden-ja-<%= sentence.id %>">
 						<%= sentence.ja %>
 					</div>
