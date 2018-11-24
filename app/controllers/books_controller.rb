@@ -77,6 +77,11 @@ class BooksController < ApplicationController
 	def edit
 	end
 
+	def sentence_list_ch
+		get_book_sentences
+		get_counts
+	end
+
 
 	#-----------------------post, put-----------------------
 	def create

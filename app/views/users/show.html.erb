@@ -42,7 +42,7 @@
       <div class="row margin-b-80 font-18">
         <% @books.each do |book| %>
           <div class="col-xs-6" >
-            <a href="/books/<%= book.id %>/sentence_ja">
+            <a href="/books/<%= book.id %>/sentence_list_ch">
               <%= book.name %>
               <span class="font-12 cl-second">(<%= book.sentences.count %>)</span>
             </a>

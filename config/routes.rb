@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get 'word_ja' #単語帳を勉強のために閲覧（日本語）
     get 'word_ch' #単語帳を勉強のために閲覧（中国語）
     get 'word_pin' #単語帳を勉強のために閲覧（ピンイン）
+    get 'sentence_list_ch' #文章の見やすい一覧
 
     #post, put
     post 'copy' #短文帳コピー

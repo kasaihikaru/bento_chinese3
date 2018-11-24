@@ -46,7 +46,7 @@
 		</div>
 		<%= link_to book_sentence_ja_path(@current_book, page: @sentence_page) do %>
 			<div class="col-xs-3 padding-2">
-				<div class="btn-selected">
+				<div class="btn-unselected">
 					<% if user_signed_in? && @current_book.user_id == current_user.id && @count_sentence_ja_unmemorized > 0 %>
 						<span data-badge-top-right="<%= @count_sentence_ja_unmemorized %>">日</span>
 					<% else %>
@@ -119,29 +119,25 @@
 </div>
 
 
-
-<div class="container margin-b-15 center-align">
-	<% if user_signed_in? && @current_book.user_id == current_user.id %>
-		<%= link_to book_uncheck_all_sentences_ja_path(@current_book),method: :put do %>
-			非表示にした短文を全て表示
-		<% end %>
-	<% end %>
-</div>
-<hr>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8" >
-			<div id="sentences-chank-home">
 				<% @sentences.each do |sentence| %>
-					<div class="sentence-chank" id="sentence-chank-<%= sentence.id %>">
-						<%= render :partial => 'books/sentence_chank_ja', :locals=>{sentence: sentence, sentence_page: @sentence_page} %>
+					<div class="left-align" data-toggle="collapse" data-target="#hidden-ja-<%= sentence.id %>">
+						<div class="font-12"><%= sentence.pin %></div>
+						<div class="font-18"><%= sentence.ch %></div>
 					</div>
+					<div class="collapse font-12" id="hidden-ja-<%= sentence.id %>">
+						<%= sentence.ja %>
+					</div>
+					<hr class="margin-5">
 				<% end %>
-				<%= paginate @sentences %>
-			</div>
 		</div>
 	</div>
 </div>
+
+
+
 
 <% if user_signed_in? && @current_book.user_id == current_user.id %>
 	<%= render :partial => 'footer/footer_not_selected_with_book_id' %>
