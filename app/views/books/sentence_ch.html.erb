@@ -38,7 +38,9 @@
 <div class="container margin-b-15">
 	<div class="row center-align">
 		<div class="col-xs-2 padding-2 center-align font-15 margin-t-5">
-			文
+			<%= link_to book_sentence_list_ch_path(@current_book) do %>
+				文
+			<% end %>
 		</div>
 		<%= link_to book_sentence_ja_path(@current_book, page: @sentence_page) do %>
 			<div class="col-xs-3 padding-2">
