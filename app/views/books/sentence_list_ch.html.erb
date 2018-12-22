@@ -124,22 +124,49 @@
 		<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8" >
 				<% @sentences.each do |sentence| %>
 
-<!-- 日本語隠すパターン -->
-<!-- 					<a class="left-align cl-first" type="button" data-toggle="collapse" data-target="#hidden-ja-<%= sentence.id %>" aria-expanded="false">
-						<div class="font-12"><%= sentence.pin %></div>
-						<div class="font-18"><%= sentence.ch %></div>
-					</a>
-					<div class="collapse font-12" id="hidden-ja-<%= sentence.id %>">
-						<%= sentence.ja %>
-					</div> -->
-
+					<!-- コピーボタン or 編集ボタン-->
 					<div class="float-right font-12 thin-link">
+						<% if user_signed_in? && sentence.book.user_id != current_user.id %>
+							<!-- 短文コピーボタン -->
+							<div type="button" class="float-right svg-btn" data-toggle="modal" data-target="#copy-book-<%= sentence.id %>">
+							  <%= render :partial => 'svg/copy_sentence' %>
+							</div>
+							<div class="modal fade" id="copy-book-<%= sentence.id %>" tabindex="-1" aria-hidden="true">
+								<%= form_tag sentence_copy_path (sentence.id) do %>
+									<div class="modal-dialog modal-dialog-centered" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<p class="font-18 bold">短文をコピーする</p>
+											</div>
+											<div class="modal-body">
+												どの短文帳に入れますか？<br>
+												一度コピーボタンを押すとちゃんとコピーされていますので、モーダルを閉じて大丈夫です。<br><br>
+									      <div class="form-group radio-wrap text-center">
+									      	<% current_user.books.each do |book| %>
+										        <label class="label-radio">
+										          <input type="radio" name="book_id" value="<%= book.id %>" required checked/>
+										          <span class="lever"><%= book.name %></span>
+										        </label>
+									        <% end %>
+									      </div>
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+								        <%= submit_tag "コピー", class: "prim-btn"%>
+								      </div>
+								    </div>
+								  </div>
+								<% end %>
+							</div><!-- End of 短文コピー -->
+						<% end %>
 						<% if user_signed_in? && sentence.book.user_id == current_user.id %>
-							<%= link_to edit_sentence_path(sentence, redirect_flg: "sentence_list_ch" ) do %>
+							<%= link_to edit_sentence_path(sentence, redirect_flg: "sentence_list_ch") do %>
 								編集
 							<% end %>
 						<% end %>
 					</div>
+
+
 
 					<div class="font-12"><%= sentence.pin %></div>
 					<div class="font-18"><%= sentence.ch %></div>
