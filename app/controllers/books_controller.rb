@@ -107,8 +107,12 @@ class BooksController < ApplicationController
 			redirect_to book_word_ja_path(@book)
 		elsif params[:book][:redirect_flg] == "word_ch"
 			redirect_to book_word_ch_path(@book)
-		else params[:book][:redirect_flg] == "word_pin"
+		elsif params[:book][:redirect_flg] == "word_pin"
 			redirect_to book_word_pin_path(@book)
+		elsif params[:book][:redirect_flg] == "sentence_ch_list"
+			redirect_to book_sentence_list_ch_path(@book)
+		else
+			redirect_to user_path(current_user)
 		end
 	end
 

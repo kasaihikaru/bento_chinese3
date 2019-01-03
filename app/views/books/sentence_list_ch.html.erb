@@ -28,7 +28,7 @@
 	<% if user_signed_in? && @current_book.user_id == current_user.id %>
 		<%= form_for @current_book, method: :put do |f| %>
 		  <%= f.text_field :name, value: @current_book.name, class: "border-none font-18 margin-t-15 bold width-80per", :required => true%>
-		  <%= f.hidden_field :redirect_flg, value: "sentence_ja" %>
+		  <%= f.hidden_field :redirect_flg, value: "sentence_ch_list" %>
 		  <%= f.submit "変更", class: "second-btn float-right margin-t-15", id: "" %>
 		<% end %>
 	<% end %>

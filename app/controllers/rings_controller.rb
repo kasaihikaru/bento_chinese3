@@ -44,6 +44,18 @@ class RingsController < ApplicationController
 	end
 
 	def update
+		@ring = Ring.find(id_params)
+		@ring.update(name: params[:ring][:name])
+
+		if params[:ring][:redirect_flg] == "vocabulary_ja"
+			redirect_to ring_vocabulary_ja_path(@ring)
+		elsif params[:ring][:redirect_flg] == "vocabulary_ch"
+			redirect_to ring_vocabulary_ch_path(@ring)
+		elsif params[:ring][:redirect_flg] == "vocabulary_pin"
+			redirect_to ring_vocabulary_pin_path(@ring)
+		else
+			redirect_to user_path(current_user)
+		end
 	end
 
 	def destroy
