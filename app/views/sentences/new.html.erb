@@ -21,7 +21,7 @@
 						<%= render :partial => 'svg/google' %>
 					</div>
 					<%= label_tag(:ja, "日本語") %>
-					<%= f.text_area :ja, placeholder: "日本語文を書く", class: "width-max", :required => true %>
+					<%= f.text_area :ja, placeholder: "日本語文を書く", class: "width-max sentence-form", :required => true %>
 					<br>
 					<br>
 
@@ -29,7 +29,7 @@
 						<%= render :partial => 'svg/google' %>
 					</div>
 					<%= label_tag(:ch, "中国語") %><br>
-					<%= f.text_area :ch, placeholder: "中国語文を書く", class: "width-max", id: "sentence-ch", :required => true %>
+					<%= f.text_area :ch, placeholder: "中国語文を書く", class: "width-max sentence-form", id: "sentence-ch", :required => true %>
 				</div>
 				<div id="auto-words" class="margin-b-80">
 					<button type="button" class="second-btn">
